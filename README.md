@@ -13,9 +13,13 @@
 <br>
 
 > Contains all modules and the main logic of Kable
+<br>
+
 **[kable-core](https://github.com/11ume/kable-core)**
 
 > Contains an little module to interact and test the kable core functionalities
+<br>
+
 **[kable-internals](https://github.com/11ume/kable-internals)**
 <br>
 
