@@ -11,6 +11,9 @@
 
 **Kable** — Is a decentralized service discovery and load balancer system for Node.js
 
+[kable-core](https://github.com/11ume/kable-core)
+[kable-internals](https://github.com/11ume/kable-internals)
+
 Is a simple and pretty alternative to others centralized systems which involve complex architectures, such as Nginx, Consul, DNS servers etc.
 
 **This project is under developement 🔥**
