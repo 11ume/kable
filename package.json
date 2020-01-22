@@ -1,6 +1,6 @@
 {
   "name": "kable",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "Decentralized discovery service for Node.js",
   "main": "./dist/main.js",
   "author": {
@@ -10,58 +10,14 @@
   "repository": "11ume/kable",
   "license": "MIT",
   "scripts": {
-    "test": "node node_modules/ava/cli.js -s",
-    "test:watch": "node node_modules/ava/cli.js -w -vs",
-    "test:verbose": "node node_modules/ava/cli.js -vs",
-    "test:coverage": "nyc ava -vs",
-    "clean": "rm -rf .nyc_output coverage",
-    "lint": "node node_modules/tslint/bin/tslint -c tslint.json --project .",
     "build": "tsc -p ./tsconfig.json",
-    "prepublishOnly": "npm run lint & npm run test & npm run build & npm run clean",
     "postinstall": "npm run build"
   },
-  "nyc": {
-    "exclude": [
-      "dist/*",
-      "test/utils/*"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "reporter": [
-      "lcov",
-      "text"
-    ]
-  },
-  "ava": {
-    "compileEnhancements": false,
-    "concurrency": 6,
-    "cache": true,
-    "files": [
-      "!dist",
-      "!dev",
-      "!test/utils/*"
-    ],
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
-  },
   "dependencies": {
-    "interval-handler": "^0.0.1-alpha",
-    "ope-abort": "^0.0.2",
-    "typescript": "^3.7.4",
-    "uuid": "^3.3.3"
+    "kable-core": "https://github.com/11ume/kable-core.git"
   },
   "devDependencies": {
-    "@msgpack/msgpack": "^1.11.0",
-    "@types/node": "^13.1.8",
-    "@types/uuid": "^3.4.6",
-    "ava": "2.4.0",
-    "nyc": "^15.0.0",
     "ts-node": "^8.6.2",
-    "tslint": "^5.20.1"
+    "typescript": "^3.7.5"
   }
 }

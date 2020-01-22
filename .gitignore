@@ -1,7 +1,7 @@
+/dev
 /dist/*
 !dist/main.d.ts
-/dev
-/coverage
 /node_modules
+/coverage
 /.nyc_output
 /.vscode

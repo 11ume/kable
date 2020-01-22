@@ -1,2 +1,2 @@
-import kable from './lib/kable'
-export = kable
+import Modules from 'kable-core'
+export = Modules.Kable.createKable
