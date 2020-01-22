@@ -1,2 +1,2 @@
-import Modules from 'kable-core'
-export = Modules.Kable.createKable
+import KableCore from 'kable-core'
+export = KableCore.Kable.createKable
