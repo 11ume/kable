@@ -1,2 +1,2 @@
-import KableCore from 'kable-core'
-export = KableCore.Kable.createKable
+import Kable from 'kable-core'
+export = Kable
