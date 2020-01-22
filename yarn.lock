@@ -41,7 +41,7 @@ interval-handler@^0.0.1-alpha:
 
 "kable-core@https://github.com/11ume/kable-core.git":
   version "0.0.1"
-  resolved "https://github.com/11ume/kable-core.git#4826e2cec3b0750c20d9ef53dde1d62c2a428569"
+  resolved "https://github.com/11ume/kable-core.git#5e33f39a601b0c5f1b9d445d53ff5ec85fc8ad4f"
   dependencies:
     "@msgpack/msgpack" "^1.11.0"
     "@types/node" "^13.1.8"
