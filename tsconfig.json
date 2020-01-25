@@ -20,6 +20,6 @@
   "exclude": [
     "dist",
     "dev",
-    "test"
+    "node_modules"
   ]
 }

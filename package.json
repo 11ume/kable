@@ -10,14 +10,35 @@
   "repository": "11ume/kable",
   "license": "MIT",
   "scripts": {
+    "test": "node node_modules/ava/cli.js -s",
+    "test:verbose": "node node_modules/ava/cli.js -vs",
+    "lint": "node node_modules/tslint/bin/tslint -c tslint.json --project .",
     "build": "tsc -p ./tsconfig.json",
+    "prepublishOnly": "npm run lint & npm run test & npm run build",
     "postinstall": "npm run build"
   },
+  "ava": {
+    "compileEnhancements": false,
+    "concurrency": 6,
+    "cache": true,
+    "files": [
+      "!dist",
+      "!dev"
+    ],
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
   "dependencies": {
-    "kable-core": "https://github.com/11ume/kable-core.git"
+    "kable-core": "https://github.com/11ume/kable-core.git",
+    "typescript": "^3.7.5"
   },
   "devDependencies": {
+    "ava": "2.4.0",
     "ts-node": "^8.6.2",
-    "typescript": "^3.7.5"
+    "tslint": "^6.0.0"
   }
 }
