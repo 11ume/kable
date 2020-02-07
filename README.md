@@ -42,7 +42,7 @@
 
 <br>
 
-kable is constituted by a series of modules and special nodes called sentries nodes:
+kable is constituted by a series of modules, tools and special nodes called sentries nodes:
 <br>
 
 **[kable-core](https://github.com/11ume/kable-core)**
