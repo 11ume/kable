@@ -17,7 +17,7 @@
 <br>
 
 <div align="center">
-<img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="150" height="auto"/>
+<img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
 </div>
 
 ## Features
