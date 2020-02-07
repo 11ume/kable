@@ -11,6 +11,7 @@
 
 **Kable** — Is a decentralized discovery service and load balancer system for Node.js
 <br>
+**This project is under active developement 🔥**
 
 > An simple and pretty alternative to others centralized systems which involve complex architectures.
 > You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
@@ -25,16 +26,16 @@
 
 ## Features
 
-* Automatic service discovery
-* Simply, easy to use and implement
-* Completely decentralized, no single point of failure
-* Each node keeps track of its own state, and knows in each moment in which state yours node peers are
-* Secured, encrypting sensitive information of each emitted datagram
-* Horizontally scalable, support node process replication
-* Intelligent node load balancing applying round robin algorithm
+* Automatic service discovery.
+* Simply, easy to use and implement.
+* Completely decentralized, no single point of failure.
+* Each node keeps track of its own state, and knows in each moment in which state yours node peers. are
+* Secured, encrypting sensitive information of each emitted datagram.
+* Horizontally scalable, support node process replication.
+* Intelligent node load balancing applying round robin algorithm.
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Can monitor external resources through their sentinel nodes like kable-pg, kable-mongo etc.
-* No need externals  DNS servers, load balancers or centralized systems of service discovery.
+* No need externals DNS servers, load balancers or centralized systems of discovery service.
 
 <br>
 
@@ -60,7 +61,4 @@ kable is constituted by a series of modules and special nodes called sentries no
 <br>
 
 > A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes 🏄‍♀️.
-
-**This project is under developement 🔥**
-
 
