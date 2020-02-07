@@ -57,11 +57,10 @@ kable is constituted by a series of modules, tools and special nodes called sent
 > Is a little module to interact with some deep functionalities of kable
 <br>
 
-**[kable-mongo](https://github.com/11ume/kable-mongo)**
-<br>
-
-**[kable-pg](https://github.com/11ume/kable-pg)**
-<br>
+Sentry | target
+------------ | -------------
+**[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo database
+**[kable-pg](https://github.com/11ume/kable-pg)** | Postgresql database
 
 > A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
 
