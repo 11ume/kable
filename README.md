@@ -14,6 +14,7 @@
 
 > An simple and pretty alternative to others centralized systems which involve complex architectures.
 > You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
+<br>
 
 **This project is under active developement 🔥**
 
@@ -53,7 +54,7 @@ kable is constituted by a series of modules and special nodes called sentries no
 **[kable-internals](https://github.com/11ume/kable-internals)**
 <br>
 
-> Contains an little module to interact and test the kable core functionalities
+> Is a little module to interact with some deep functionalities of kable
 <br>
 
 **[kable-mongo](https://github.com/11ume/kable-mongo)**
