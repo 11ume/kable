@@ -32,7 +32,7 @@
 * Automatic service discovery.
 * Simply, easy to use and implement.
 * Completely decentralized, no single point of failure.
-* Each node keeps track of its own state, and knows in each moment in which state of the nodes that are in the same subnet.
+* Each node keeps track of its own state, and knows in each moment the state of the nodes that are in their same subnet.
 * Secured, encrypting sensitive information of each emitted datagram.
 * Horizontally scalable, support node process replication.
 * Intelligent node load balancing applying round robin algorithm.
