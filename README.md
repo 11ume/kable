@@ -16,6 +16,10 @@
 > You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
 <br>
 
+<div align="center">
+<img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="150" height="auto"/>
+</div>
+
 ## Features
 
 * Automatic service discovery
