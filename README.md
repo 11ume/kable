@@ -15,10 +15,13 @@
 > An simple and pretty alternative to others centralized systems which involve complex architectures.
 > You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
 <br>
+<br>
 
 <div align="center">
 <img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
 </div>
+<br>
+
 
 ## Features
 
