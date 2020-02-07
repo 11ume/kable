@@ -45,16 +45,16 @@
 kable is constituted by a series of modules, tools and special nodes called sentries nodes:
 <br>
 
-> Contains all modules and the main logic of Kable
-<br>
-
 **[kable-core](https://github.com/11ume/kable-core)**
 <br>
 
-> Is a little module to interact with some deep functionalities of kable
+> Contains all modules and the main logic of Kable
 <br>
 
 **[kable-internals](https://github.com/11ume/kable-internals)**
+> Is a little module to interact with some deep functionalities of kable
+
+<br>
 <br>
 
 > A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
@@ -77,6 +77,4 @@ Sentry | target
 <img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
 </div>
 <br>
-
-
 
