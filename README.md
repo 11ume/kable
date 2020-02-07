@@ -63,5 +63,18 @@ kable is constituted by a series of modules and special nodes called sentries no
 **[kable-pg](https://github.com/11ume/kable-pg)**
 <br>
 
-> A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes 🏄‍♀️.
+> A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
+
+**[kable-vscode](https://github.com/11ume/kable-vscode)**
+<br>
+
+> A cool node status visualization extension, created for vscode 🏄‍♀️.
+
+<br>
+<div align="center">
+<img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
+</div>
+<br>
+
+
 
