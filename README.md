@@ -45,16 +45,19 @@
 kable is constituted by a series of modules, tools and special nodes called sentries nodes:
 <br>
 
+> Contains all modules and the main logic of Kable
+<br>
+
 **[kable-core](https://github.com/11ume/kable-core)**
 <br>
 
-> Contains all modules and the main logic of Kable
+> Is a little module to interact with some deep functionalities of kable
 <br>
 
 **[kable-internals](https://github.com/11ume/kable-internals)**
 <br>
 
-> Is a little module to interact with some deep functionalities of kable
+> A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
 <br>
 
 Sentry | target
@@ -62,12 +65,11 @@ Sentry | target
 **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo database
 **[kable-pg](https://github.com/11ume/kable-pg)** | Postgresql database
 
-> A serie of node sentries. These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
+> A cool node status visualization extension, created for vscode 🏄‍♀️.
+<br>
 
 **[kable-vscode](https://github.com/11ume/kable-vscode)**
 <br>
-
-> A cool node status visualization extension, created for vscode 🏄‍♀️.
 
 <br>
 <div align="center">
