@@ -88,9 +88,11 @@ Sentry | target
 
 
 ### Usage
+<br>
 
-In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000** and they are in separate containers.
-The first service is called foo and looks like this.
+In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000**, and they are in separate containers.
+<br>
+The first service is called **foo** and looks like this.
 <br>
 
 ```typescript
@@ -107,3 +109,24 @@ server.on('listening', foo.up)
 server.on('close', foo.down)
 server.listen(foo.port)
 ```
+<br>
+<br>
+
+The second service is called **bar** and looks like this.
+<br>
+
+```typescript
+const bar = kable('bar')
+const server = createServer(async (_req, res) => {
+    const pick = await bar.pick('foo')
+    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+})
+
+server.on('listening', bar.up)
+server.on('close', bar.down)
+server.listen(bar.port)
+```
+
+<br>
+<br>
+
