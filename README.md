@@ -93,7 +93,6 @@ Sentry | target
 In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000**, and they are in separate containers.
 
 <br>
-<br>
 
 #### The first service is called **foo** and looks like this:
 
@@ -113,7 +112,7 @@ server.on('listening', foo.up)
 server.on('close', foo.down)
 server.listen(foo.port)
 ```
-<br>
+
 <br>
 
 #### The second service is called **bar** and looks like this:
