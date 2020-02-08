@@ -16,6 +16,11 @@
 > You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
 <br>
 
+**why?**
+
+> Creating and maintaining microservice architectures is a very expensive process, that involves things like load balancing between microservices, the discovery of services, health checking, knowing at every moment in which state the service is, fault tolerance replication of each service etc. The goal of Kable is to make all this easier to do, mainly in small scale projects like startup projects. 
+<br>
+
 **This project is under active developement 🔥**
 
 <br>
