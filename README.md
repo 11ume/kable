@@ -226,22 +226,30 @@ export const connection = (kable: Kable
 <br>
 
 ```typescript
+import http from 'http'
 import kable from 'kable'
-import { createServer } from 'http'
+import { MongoClient } from 'mongodb'
 import { connection } from './db'
 
-const foo = kable('foo')
-const server = createServer(async (_req, res) => {
-    const conn = await connection(foo, 'admin', 'mongo')
+const createServer = (conn: MongoClient) => http.createServer(async (_req, res) => {
     const db = conn.db()
     const admin = db.admin()
     const ping = await admin.ping()
-    res.end(ping.ok)
+
+    res.end(`${ping.ok}`)
 })
 
-server.on('listening', foo.up)
-server.on('close', foo.down)
-server.listen(foo.port)
+const main = async () => {
+    const foo = kable('foo')
+    const conn = await connection(foo, 'admin', 'mongo')
+    const server = createServer(conn)
+
+    server.on('listening', foo.up)
+    server.on('close', foo.down)
+    server.listen(foo.port)
+}
+
+main()
 ```
 
 <br>
