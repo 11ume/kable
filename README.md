@@ -195,6 +195,36 @@ npm start -u mongodb://localhost:27017 -i mongo
 
 <br>
 
+> db.ts
+
+<br>
+
+```typescript
+import { MongoClient } from 'mongodb'
+import { Kable } from 'kable-core/lib/kable'
+
+export const connection = (kable: Kable
+    , db: string
+    , service: string
+    , options = { useUnifiedTopology: true }): Promise<MongoClient> => new Promise((resolve, reject) => {
+        return kable.pick(service)
+            .then(({ host, port }) => {
+                const uri = `'mongodb://${host}:${port}/${db}`
+                MongoClient.connect(uri, options, (err: Error, conn) => {
+                    if (err) return reject(err)
+                    resolve(conn)
+                })
+            })
+            .catch(reject)
+    })
+```
+
+<br>
+
+> foo.ts
+
+<br>
+
 ```typescript
 import kable from 'kable'
 import { createServer } from 'http'
