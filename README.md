@@ -37,14 +37,14 @@
 * Automatic service discovery.
 * Simply, easy to use and implement.
 * Completely decentralized, no single point of failure.
-* Each node keeps track of its own state, and knows in each moment the state of the nodes that are in their same subnet.
+* Each node maintains his own state, and knows in each moment the state of the nodes that are in their same subnet.
 * Secured, encrypting sensitive information of each emitted datagram.
 * Horizontally scalable, support node process replication.
 * Intelligent node load balancing applying round robin algorithm.
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
-* Can monitor external resources through their sentinel nodes like kable-pg, kable-mongo etc.
+* Monitoring the status of external resources, through sentinel nodes.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
-* Emits low amount of data. How?, does not emit redundant data and serializing the emitted data via **[Message Pack](https://msgpack.org/)**.
+* Emits low amount of data. How?, not emitting redundant data and applying serialization via **[Message Pack](https://msgpack.org/)**.
 <br>
 
 #### kable is constituted by a series of modules, tools and special nodes called sentries nodes:
