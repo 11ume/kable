@@ -70,10 +70,10 @@
 > These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
 <br>
 
-Sentry | target
------------- | -------------
-**[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo database
-**[kable-pg](https://github.com/11ume/kable-pg)** | Postgresql database
+| Sentry                                                  | target              |
+| ------------------------------------------------------- | ------------------- |
+| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo database      |
+| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql database |
 <br>
 
 #### A cool node status visualization extension, created for vscode 🏄‍♀️
@@ -172,3 +172,40 @@ What happening if some node don't call the **down** method?, well, kable always 
 
 In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 
+<br>
+
+In the following context, we have the two previous services, but one of theses, need of some external service like a database.
+
+<br>
+
+> Here is where an sentinel node make sense.
+
+<br>
+
+All sentinel nodes are ready to run with the minimum configuration required.
+
+<br>
+
+```bash
+npm install https://github.com/11ume/kable-mongo
+npm run -id mongo -uri mongodb://localhost:27017/admin
+```
+
+<br>
+
+```typescript
+import kable from 'kable'
+import { createServer } from 'http'
+
+const foo = kable('foo')
+const server = createServer(async (_req, res) => {
+    const pick = await foo.pick('mongo')
+    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+})
+
+server.on('listening', foo.up)
+server.on('close', foo.down)
+server.listen(foo.port)
+```
+
+<br>
