@@ -86,3 +86,23 @@ Sentry | target
 </div>
 <br>
 
+
+### Usage
+
+In the following context, we have two HTTP services that must communicate with each other.
+The first service is called foo and looks like this:
+<br>
+```typescript
+import kable from 'kable'
+import { createServer } from 'http'
+
+const foo = kable('foo')
+const server = createServer(async (_req, res) => {
+    const pick = await foo.pick('bar')
+    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+})
+
+server.on('listening', foo.up)
+server.on('close', foo.down)
+server.listen(foo.port)
+```
