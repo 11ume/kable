@@ -153,3 +153,11 @@ Normally, if everything goes well, the node always look for the required node in
 
 <br>
 
+
+The method up, will put to work to kable and put the node in the second state called **running**.
+The method down, will do the opposite to up, and his put the node in the last state called **down**. 
+What happening if i'm not call the down method?, well, kable always tries to issue its termination status, therefore, if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status.
+
+
+In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a node timeout controller, that will remove the node from its registry, once the estimated waiting time is over by default **3 seconds**.
+
