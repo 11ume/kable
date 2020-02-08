@@ -90,8 +90,10 @@ Sentry | target
 ### Usage
 
 In the following context, we have two HTTP services that must communicate with each other.
-The first service is called foo and looks like this:
+The first service is called foo and looks like this.
+# Note: kable uses by default the host **0.0.0.0** and the port **3000**
 <br>
+
 ```typescript
 import kable from 'kable'
 import { createServer } from 'http'
