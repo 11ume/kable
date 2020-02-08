@@ -60,7 +60,7 @@
 #### A serie of node sentries. 
 <br>
 
-> These are a series of special nodes, responsible for controlling with great precision the state of external services. You can create your own sentinel nodes.
+> These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
 <br>
 
 Sentry | target
