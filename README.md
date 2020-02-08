@@ -188,33 +188,10 @@ All sentinel nodes are ready to run with the minimum configuration required.
 
 <br>
 
-> First create a new package.json
-
-```json
-{
-  "name": "mongo",
-  "version": "0.0.1",
-  "scripts": {
-    "start": "kable -u mongodb://localhost:27017 -i mongo"
-  },
-  "dependencies": {
-    "kable-mongo": "https://github.com/11ume/kable-mongo"
-  }
-}
-```
-
-> Second install the dependecies and run the sentinel node
-
 ```bash
 npm install https://github.com/11ume/kable-mongo
-npm start
-```
-> Or you can directly run the sentinel node, without create a package.json
-
-```bash
 npm start -u mongodb://localhost:27017 -i mongo
 ```
-
 
 <br>
 
