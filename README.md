@@ -44,7 +44,7 @@
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Can monitor external resources through their sentinel nodes like kable-pg, kable-mongo etc.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
-* Emits low amount of data and does not emit redundant data. How?, serializing the information it emits via **[Message Pack](https://msgpack.org/)**.
+* Emits low amount of data. How?, does not emit redundant data and serializing the emitted data via **[Message Pack](https://msgpack.org/)**.
 <br>
 
 #### kable is constituted by a series of modules, tools and special nodes called sentries nodes:
