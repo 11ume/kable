@@ -151,11 +151,18 @@ by default **5 minutes**, This operation may be aborted when you deem it necessa
 
 Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica node.
 
+
+<br> 
+
+The method **up**, will puts kable to work and set the node it the second state called **running**.
+
 <br>
 
+The method down, stops all cable tasks, and will set the node in the latest state called **down**. 
 
-The method up, will put to work to kable and put the node in the second state called **running**.
-The method down, will do the opposite to up, and his put the node in the last state called **down**. 
+<br>
+
+> **Note**: each node has a state machine.
 
 <br>
 
