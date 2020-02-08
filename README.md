@@ -57,7 +57,7 @@
 > Is a little module to interact with some deep functionalities of kable
 <br>
 
-#### A serie of node sentries. 
+#### A serie of node sentries
 <br>
 
 > These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
@@ -69,7 +69,7 @@ Sentry | target
 **[kable-pg](https://github.com/11ume/kable-pg)** | Postgresql database
 <br>
 
-> A cool node status visualization extension, created for vscode 🏄‍♀️.
+#### A cool node status visualization extension, created for vscode 🏄‍♀️
 <br>
 
 **[kable-vscode](https://github.com/11ume/kable-vscode)**
