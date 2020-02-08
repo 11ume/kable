@@ -166,7 +166,7 @@ The method **down**, stops all cable tasks, and will set the node in the latest 
 
 <br>
 
-What happening if node don't call the **down** method?, well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
+What happening if some node don't call the **down** method?, well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
 
 <br>
 
