@@ -188,7 +188,7 @@ All sentinel nodes are ready to run with the minimum configuration required.
 
 <br>
 
-> Fist create a package.json
+> First create a new package.json
 
 ```json
 {
@@ -209,6 +209,12 @@ All sentinel nodes are ready to run with the minimum configuration required.
 npm install https://github.com/11ume/kable-mongo
 npm start
 ```
+> Or you can directly run the sentinel node, without create a package.json
+
+```bash
+npm start -u mongodb://localhost:27017 -i mongo
+```
+
 
 <br>
 
