@@ -91,7 +91,7 @@ Sentry | target
 ### Usage
 <br>
 
-In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000** and **3001**.
+In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
 
 <br>
 <br>
@@ -118,7 +118,7 @@ server.listen(foo.port)
 <br>
 <br>
 
-The second service is called **bar** and looks like this:
+The second service is called **bar**:
 
 <br>
 
@@ -141,11 +141,11 @@ Surely you are wondering what is happening under the hood?
 
 <br>
 
-Well, kable uses UDP Broadcast, to locate each node that is within the same subnet.
-Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed on a node.
+Well, kable uses UDP Broadcast, to locate each node inside of same subnet.
+Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed in some node.
 
-The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In memory)**. 
-If he cannot found it in his **cache**, he will wait for that node for an estimated time, 
+The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
+If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary. 
 
 <br>
