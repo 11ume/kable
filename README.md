@@ -158,17 +158,17 @@ The method **up**, will puts kable to work and set the node it the second state 
 
 <br>
 
-The method down, stops all cable tasks, and will set the node in the latest state called **down**. 
+The method **down**, stops all cable tasks, and will set the node in the latest state called **down**. 
 
 <br>
 
-> **Note**: each node have a state machine.
+> **Note**: Each node contains a states machine, with 5 possible states: **up** - **running** - **doing** - **stopped** - **down**.
 
 <br>
 
-What happening if i'm not call the down method?, well, kable always tries to issue its termination status, therefore, if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status.
+What happening if node don't call the **down** method?, well, kable always tries to issue hist termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
 
 <br>
 
-In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a node timeout controller, that will remove the node from its registry, once the estimated waiting time is over by default **3 seconds**.
+In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 
