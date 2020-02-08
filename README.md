@@ -13,7 +13,7 @@
 <br>
 
 > An simple and pretty alternative to others centralized systems which involve complex architectures.
-> You don't need to run or take charge separately of any load balancer, or a name resolution server, neither service discovery system. 
+> You should not worry about management separately of a load balancer, or a name resolution server, neither of service discovery system. 
 <br>
 
 **why?**
