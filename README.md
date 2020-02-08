@@ -90,7 +90,7 @@ Sentry | target
 ### Usage
 <br>
 
-In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000**, and they are in separate containers.
+In the following context, we have two HTTP services that must communicate with each other. The services are running in the port **3000** and **3001**.
 
 <br>
 <br>
@@ -122,7 +122,7 @@ The second service is called **bar** and looks like this:
 <br>
 
 ```typescript
-const bar = kable('bar')
+const bar = kable('bar', { port: 3001 })
 const server = createServer(async (_req, res) => {
     const pick = await bar.pick('foo')
     res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
