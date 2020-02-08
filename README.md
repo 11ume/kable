@@ -189,7 +189,7 @@ All sentinel nodes are ready to run with the minimum configuration required.
 
 ```bash
 npm install https://github.com/11ume/kable-mongo
-npm run -id mongo -uri mongodb://localhost:27017/admin
+npm start -id mongo -uri mongodb://localhost:27017/admin
 ```
 
 <br>
@@ -197,10 +197,12 @@ npm run -id mongo -uri mongodb://localhost:27017/admin
 ```typescript
 import kable from 'kable'
 import { createServer } from 'http'
+import connection from './connection'
 
 const foo = kable('foo')
 const server = createServer(async (_req, res) => {
-    const pick = await foo.pick('mongo')
+    const bar = await foo.pick('bar')
+    const mongo = await foo.pick('mongo')
     res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
 })
 

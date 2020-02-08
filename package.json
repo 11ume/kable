@@ -2,7 +2,9 @@
   "name": "kable",
   "version": "0.0.1",
   "description": "Decentralized discovery service for Node.js",
-  "main": "./dist/main.js",
+  "main": "main.js",
+  "types": "main.ts",
+  "sideEffects": false,
   "author": {
     "name": "Horacio Rivero",
     "email": "horacioriverods@gmail.com"
