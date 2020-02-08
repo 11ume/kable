@@ -162,7 +162,7 @@ The method down, stops all cable tasks, and will set the node in the latest stat
 
 <br>
 
-> **Note**: each node has a state machine.
+> **Note**: each node have a state machine.
 
 <br>
 
