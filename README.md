@@ -39,10 +39,10 @@
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Can monitor external resources through their sentinel nodes like kable-pg, kable-mongo etc.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
-
 <br>
 
 #### kable is constituted by a series of modules, tools and special nodes called sentries nodes:
+<br>
 <br>
 
 **[kable-core](https://github.com/11ume/kable-core)**
