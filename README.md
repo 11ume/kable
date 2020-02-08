@@ -92,7 +92,7 @@
 ### Usage
 <br>
 
-In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
+#### In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
 
 <br>
 <br>
@@ -173,8 +173,9 @@ What happening if some node don't call the **down** method?, well, kable always 
 In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 
 <br>
+<br>
 
-In the following context, we have the two previous services, but one of theses, need of some external service like a database.
+#### In the following context, we have the two previous services, but one of theses, need of some external service like a database.
 
 <br>
 
