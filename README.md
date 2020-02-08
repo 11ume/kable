@@ -209,7 +209,7 @@ export const connection = (kable: Kable
     , options = { useUnifiedTopology: true }): Promise<MongoClient> => new Promise((resolve, reject) => {
         return kable.pick(service)
             .then(({ host, port }) => {
-                const uri = `'mongodb://${host}:${port}/${db}`
+                const uri = `mongodb://${host}:${port}/${db}`
                 MongoClient.connect(uri, options, (err: Error, conn) => {
                     if (err) return reject(err)
                     resolve(conn)
