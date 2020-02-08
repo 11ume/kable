@@ -142,7 +142,7 @@ Surely you are wondering what is happening under the hood?
 <br>
 
 Well, kable uses UDP Broadcast, to locate each node that is within the same subnet.
-Each node sends and receives information on its location and current status every certain time, or immediately when a status update is performed on a node.
+Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed on a node.
 
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In memory)**. 
 If he cannot found it in his **cache**, he will wait for that node for an estimated time, 
