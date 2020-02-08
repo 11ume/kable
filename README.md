@@ -94,7 +94,9 @@ In the following context, we have two HTTP services that must communicate with e
 
 <br>
 <br>
-The first service is called **foo** and looks like this:
+
+#### The first service is called **foo** and looks like this:
+
 <br>
 
 ```typescript
@@ -113,7 +115,9 @@ server.listen(foo.port)
 ```
 <br>
 <br>
-The second service is called **bar** and looks like this:
+
+#### The second service is called **bar** and looks like this:
+
 <br>
 
 ```typescript
