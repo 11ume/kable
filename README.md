@@ -44,6 +44,7 @@
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Monitoring the status of external resources, through sentinel nodes.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
+* No needed extra requests, everything a node might required is found in his memory.
 * Emits low amount of data. How?, not emitting redundant data and applying serialization via **[Message Pack](https://msgpack.org/)**.
 <br>
 
@@ -146,7 +147,9 @@ Each node sends and receives information on his location and current status ever
 
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
-by default **5 minutes**, This operation may be aborted when you deem it necessary. 
+by default **5 minutes**, This operation may be aborted when you deem it necessary.
+
+Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica node.
 
 <br>
 
