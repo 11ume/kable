@@ -91,8 +91,9 @@
 
 ### Usage
 <br>
+<br>
 
-#### In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
+#### In the following context, we have two HTTP services what should communicate between them. The services are running in the port 3000 and 3001.
 
 <br>
 <br>
@@ -197,13 +198,15 @@ npm start -id mongo -uri mongodb://localhost:27017/admin
 ```typescript
 import kable from 'kable'
 import { createServer } from 'http'
-import connection from './connection'
+import { connection } from './db'
 
 const foo = kable('foo')
 const server = createServer(async (_req, res) => {
-    const bar = await foo.pick('bar')
-    const mongo = await foo.pick('mongo')
-    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+    const conn = await connection(foo, 'admin', 'mongo')
+    const db = conn.db()
+    const admin = db.admin()
+    const ping = await admin.ping()
+    res.end(ping.ok)
 })
 
 server.on('listening', foo.up)
