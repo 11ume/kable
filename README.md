@@ -150,7 +150,7 @@ The first thing that is done when the **pick** method is called, is look for the
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary.
 
-Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica node.
+Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica.
 
 
 <br> 
