@@ -155,7 +155,7 @@ Normally, if everything goes well, the node always look for the required node in
 
 <br> 
 
-The method **up**, will puts kable to work and set the node it the second state called **running**.
+The method **up**, will puts kable to work and set the node in the second state called **running**.
 
 <br>
 
@@ -163,7 +163,7 @@ The method **down**, stops all cable tasks, and will set the node in the latest 
 
 <br>
 
-> **Note**: Each node contains a states machine, with 5 possible states: **up** - **running** - **doing** - **stopped** - **down**.
+> **Note**: Each node contains a states machine, with five possible states: **up** - **running** - **doing** - **stopped** - **down**.
 
 <br>
 
