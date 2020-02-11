@@ -91,8 +91,9 @@
 
 ### Usage
 <br>
+<br>
 
-#### In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
+#### In the following context, we have two HTTP services what should communicate between them. The services are running in the port 3000 and 3001.
 
 <br>
 <br>
@@ -149,12 +150,12 @@ The first thing that is done when the **pick** method is called, is look for the
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary.
 
-Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica node.
+Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica.
 
 
 <br> 
 
-The method **up**, will puts kable to work and set the node it the second state called **running**.
+The method **up**, will puts kable to work and set the node in the second state called **running**.
 
 <br>
 
@@ -162,7 +163,7 @@ The method **down**, stops all cable tasks, and will set the node in the latest 
 
 <br>
 
-> **Note**: Each node contains a states machine, with 5 possible states: **up** - **running** - **doing** - **stopped** - **down**.
+> **Note**: Each node contains a states machine, with five possible states: **up** - **running** - **doing** - **stopped** - **down**.
 
 <br>
 
@@ -189,26 +190,6 @@ All sentinel nodes are ready to run with the minimum configuration required.
 
 ```bash
 npm install https://github.com/11ume/kable-mongo
-npm start -id mongo -uri mongodb://localhost:27017/admin
+npm start -u mongodb://localhost:27017 -i mongo
 ```
-
-<br>
-
-```typescript
-import kable from 'kable'
-import { createServer } from 'http'
-import connection from './connection'
-
-const foo = kable('foo')
-const server = createServer(async (_req, res) => {
-    const bar = await foo.pick('bar')
-    const mongo = await foo.pick('mongo')
-    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
-})
-
-server.on('listening', foo.up)
-server.on('close', foo.down)
-server.listen(foo.port)
-```
-
-<br>
+....
