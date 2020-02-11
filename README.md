@@ -71,8 +71,10 @@
 
 | Sentry                                                  | target              |
 | ------------------------------------------------------- | ------------------- |
-| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo database      |
-| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql database |
+| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo         db    |  
+| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis         db    |
+| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql    db    |
+
 <br>
 
 #### A cool node status visualization extension, created for vscode 🏄‍♀️
