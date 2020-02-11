@@ -1,0 +1,10 @@
+{
+  "name": "mongo",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "kable -u mongodb://localhost:27017 -i mongo"
+  },
+  "dependencies": {
+    "kable-mongo": "https://github.com/11ume/kable-mongo"
+  }
+}
