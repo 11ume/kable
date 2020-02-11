@@ -69,11 +69,14 @@
 > These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
 <br>
 
-| Sentry                                                  | target              |
-| ------------------------------------------------------- | ------------------- |
-| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo               |  
-| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis               |
-| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql          |
+| Sentry                                                  | target              | status
+| ------------------------------------------------------- | ------------------- |---------------------
+| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo               |  🆗
+| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis               |  🆗
+| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql          |  🆗
+| **[kable-Memcached]()**                                 | Memcached           |  🔨
+| **[kable-http]()**                                      | HTTP/HTTPS          |  🔨
+| **[kable-sync]()**                                      | TCP/UDP             |  🔨
 
 <br>
 
