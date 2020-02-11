@@ -1,0 +1,16 @@
+{
+  "name": "bar-service",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node ./dist/service.js"
+  },
+  "dependencies": {
+    "kable": "https://github.com/11ume/kable.git",
+    "ts-node": "^8.6.2",
+    "zeromq": "^6.0.0-beta.6"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  }
+}
