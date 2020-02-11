@@ -71,9 +71,9 @@
 
 | Sentry                                                  | target              |
 | ------------------------------------------------------- | ------------------- |
-| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo         db    |  
-| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis         db    |
-| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql    db    |
+| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo               |  
+| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis               |
+| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql          |
 
 <br>
 
