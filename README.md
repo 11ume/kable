@@ -124,6 +124,9 @@ The second service is called **bar**:
 <br>
 
 ```typescript
+import kable from 'kable'
+import { createServer } from 'http'
+
 const bar = kable('bar', { port: 3001 })
 const server = createServer(async (_req, res) => {
     const pick = await bar.pick('foo')
