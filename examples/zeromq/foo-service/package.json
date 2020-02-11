@@ -1,0 +1,15 @@
+{
+  "name": "foo-service",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node ./dist/service.js"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "kable": "https://github.com/11ume/kable.git",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}
