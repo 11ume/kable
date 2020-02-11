@@ -175,20 +175,3 @@ In the case of an controlled closing be invoked or an abrupt closure is never be
 <br>
 <br>
 
-#### In the following context, we have the two previous services, but one of theses, need of some external service like a database.
-
-<br>
-
-> Here is where an sentinel node make sense.
-
-<br>
-
-All sentinel nodes are ready to run with the minimum configuration required.
-
-<br>
-
-```bash
-npm install https://github.com/11ume/kable-mongo
-npm start -u mongodb://localhost:27017 -i mongo
-```
-....
