@@ -9,14 +9,14 @@ function handleEvents(serv: Kable, sock: zmq.Pull) {
             serv.start()
         }
     })
-    sock.events.on('close', () => {
-        if (serv.avaliable) {
-            serv.stop()
-        }
-    })
     sock.events.on('connect:retry', () => {
         if (serv.avaliable) {
             serv.doing('connect:retry')
+        }
+    })
+    sock.events.on('close', () => {
+        if (serv.avaliable) {
+            serv.stop()
         }
     })
 }
