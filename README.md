@@ -39,7 +39,7 @@
 * Each node maintains his own state, and knows in each moment the state of the nodes that are in their same subnet.
 * Secured, encrypting sensitive information of each emitted datagram.
 * Horizontally scalable, support node process replication.
-* Intelligent node load balancing applying round robin algorithm.
+* Intelligent node load balancing applying Round Bobin algorithm and first to be available.
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Monitoring the status of external resources, through sentinel nodes.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
