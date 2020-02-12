@@ -43,7 +43,8 @@
 * Agnostic, works in conjunction with any technology, Nest.js, Micro.js, Express.js, Apollo, MQTT, ZeroMQ, etc.
 * Monitoring the status of external resources, through sentinel nodes.
 * No need externals DNS servers, load balancers or centralized systems of discovery service.
-* No needed extra requests, everything a node might required is found in his memory.
+* High performance because elimination of extra hop, everything a node might required is found in his memory, 
+and is administered before it is requested.
 * Emits low amount of data. How?, not emitting redundant data and applying serialization via **[Message Pack](https://msgpack.org/)**.
 <br>
 
