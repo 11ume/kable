@@ -47,6 +47,8 @@
 and is administered before it is requested.
 * Master less architecture, all nodes are equal.
 * Emits low amount of data. How?, not emitting redundant data and applying serialization via **[Message Pack](https://msgpack.org/)**.
+* Implement Gossip protocol, **in review**.
+
 <br>
 
 #### kable is constituted by a series of modules, tools and special nodes called sentries nodes:
