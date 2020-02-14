@@ -4,7 +4,7 @@
 
 <br>
 
-> Kable aims to be extremely simple and to hide all the complexity.
+> Kable aims to be extremely simple to hide all unnecessary complexity.
 
 <br>
 
