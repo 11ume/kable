@@ -11,7 +11,11 @@ In the following context, we have two HTTP services what should communicate betw
 
 <br>
 
-The first service is called **foo**, this will be your identifier within the kable node architecture, and looks like this
+The first service is called **foo**, this will be your identifier inside of your nodes cluster, and looks like this
+
+<br>
+
+Note: kable does **not admits duplicate node ids**  
 
 <br>
 
@@ -21,7 +25,7 @@ import { createServer } from 'http'
 
 const foo = kable('foo')
 const server = createServer(async (_req, res) => {
-    const pick = await foo.pick('bar')
+    const pick = await foo.pick('bar') 
     res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
 })
 
@@ -32,7 +36,19 @@ server.listen(foo.port)
 
 <br>
 
-Note: kable does **not admits duplicate node ids**  
+``` typescript foo.pick('bar') ```
+
+The node with id **bar** is requested
+
+> Possibles scenarios
+
+* The **bar** service has not yet started or is in a state of unavailable.
+  * The node pick method, will put the request in a wait queue until the node has been announced, then will take the node immediately.
+ 
+ <br>
+  
+* The service is already available and is stored in the nodes registre of the service **foo**.
+	* Will take the node immediately.
 
 <br>
 <br>
