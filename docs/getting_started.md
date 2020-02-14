@@ -32,7 +32,7 @@ server.listen(foo.port)
 
 <br>
 
-Note: kable does **not admits duplicate id nodes**  
+Note: kable does **not admits duplicate node ids**  
 
 <br>
 <br>
@@ -66,15 +66,15 @@ Now surely you are wondering what is happening **under the hood**?
 Well, kable uses **UDP Broadcast**, to locate each node inside of same subnet.
 Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed in some node. 
 
-> Note: In most production environments like Digitalocean or AWS EC2 etc, it is not possible to perform UDP brodcasting, therefore it is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
-like those provided by docker swarm.
+> Note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore it is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
+like those provided by docker swarm. In a future kable could solve this problem by implementing a protocol called SWIM [SWIM](https://www.brianstorti.com/swim/)
+
 
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary.
 
 Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica.
-
 
 <br> 
 
