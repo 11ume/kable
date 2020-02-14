@@ -31,11 +31,11 @@
 <br>
 <br>
 
-**[Documentation](https://github.com/11ume/kable/doc/doc.md)**
+**[Documentation](https://github.com/11ume/kable/docs/doc.md)**
 
 <br>
 
-**[Getting Started](https://github.com/11ume/kable/doc/getting_started.md)**
+**[Getting Started](https://github.com/11ume/kable/docs/getting_started.md)**
 
 <br>
 
