@@ -51,23 +51,23 @@ server.listen(foo.port)
 
 <br>
 
+The **foo** node requests the updated information and location of **bar** node
+
 ``` typescript
-foo.pick('bar') 
+foo.pick('bar'): Promise<NodeRegistre> 
 ```
 
 <br>
 
-The node with id **bar** is requested
-
 > Possibles scenarios
 
 * The **bar** service has not yet started or is in a state of unavailable.
-  * The node pick method, will put the request in a wait queue until the node has been announced, then will take the node immediately.
+  * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
  
  <br>
   
 * The **bar** service is already available and is stored in the nodes registre of the service **foo**.
-	* Will take the node immediately.
+  * Will take the node immediately.
 
 <br>
 
