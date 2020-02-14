@@ -35,6 +35,10 @@
 
 <br>
 
+**[Getting Started](https://github.com/11ume/kable/doc/getting_started.md)**
+
+<br>
+
 <div align="center">
 <img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
 </div>
@@ -83,14 +87,14 @@ and is administered before it is requested.
 > These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
 <br>
 
-| Sentry                                                  | target              | status
-| ------------------------------------------------------- | ------------------- |---------------------
-| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo               |  🟢
-| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis               |  🟢
-| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql          |  🟢
-| **[kable-Memcached]()**                                 | Memcached           |  🔨
-| **[kable-http]()**                                      | HTTP/HTTPS          |  🔨
-| **[kable-sync]()**                                      | TCP/UDP             |  🔨
+| Sentry                                                  | target     | status |
+| ------------------------------------------------------- | ---------- | ------ |
+| **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo      | 🟢     |
+| **[kable-redis](https://github.com/11ume/kable-redis)** | Redis      | 🟢     |
+| **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql | 🟢     |
+| **[kable-Memcached]()**                                 | Memcached  | 🔨     |
+| **[kable-http]()**                                      | HTTP/HTTPS | 🔨     |
+| **[kable-sync]()**                                      | TCP/UDP    | 🔨     |
 
 <br>
 
@@ -105,4 +109,3 @@ and is administered before it is requested.
 <img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
 </div>
 <br>
-
