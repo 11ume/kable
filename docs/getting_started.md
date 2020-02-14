@@ -4,7 +4,7 @@
 
 <br>
 
-The architecture of kable is based on a decentralized node system where each node leads to a memory record of the location and status of the other nodes that are in its same cluster.
+The architecture of kable is based on a decentralized node system where each node have in memory record of the location and status of the other nodes that are in his same cluster.
 
 These nodes communicate with each other at intervals of time and immediately when a some change occurs.
 
