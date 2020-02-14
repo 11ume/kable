@@ -10,7 +10,7 @@
 <br>
 
 <p align="center">
-    <img alt="Build" src="https://github.com/11ume/kable/workflows/Node%20CI/badge.svg?branch=master">
+    <img alt="Build" src="https://github.com/11ume/kable-core/workflows/Node%20CI/badge.svg?branch=master">
 <br>
 
 <br>
