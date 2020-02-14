@@ -36,7 +36,11 @@ server.listen(foo.port)
 
 <br>
 
-``` typescript foo.pick('bar') ```
+``` typescript
+foo.pick('bar') 
+```
+
+<br>
 
 The node with id **bar** is requested
 
