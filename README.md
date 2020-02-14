@@ -6,7 +6,11 @@
 <img src="https://github.com/11ume/kable/blob/master/images/logo.png" width="150" height="auto"/>
 </div>
 <br>
+
+<p align="center">
+    <img alt="Build" src="https://github.com/11ume/kable/workflows/Node%20CI/badge.svg?branch=master">
 <br>
+
 <br>
 
 **Kable** — Is a decentralized discovery service and load balancer system for Node.js
@@ -31,7 +35,7 @@
 <br>
 
 
-## Features
+## Main features
 
 * Automatic service discovery.
 * Simply, easy to use and implement.
