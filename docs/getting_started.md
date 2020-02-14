@@ -4,6 +4,13 @@
 
 <br>
 
+The architecture of kable is based on a decentralized node system where each node leads to a memory record of the location and status of the other nodes that are in its same cluster.
+
+These nodes communicate with each other at intervals of time and immediately when a some change occurs.
+
+
+<br>
+
 #### Installation
 
 ```bash
@@ -63,9 +70,17 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 * The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
- 
+  
  <br>
   
+ 
+ * The **bar** service is already have a replicas.
+   * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica by applying Round Robin algorithm.
+ <br>
+    **Note**: Each node internally contains an ordered queue of available nodes.
+  
+ <br>
+   
 * The **bar** service is already available and is stored in the nodes registre of the service **foo**.
   * Will take the node immediately.
 
