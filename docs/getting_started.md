@@ -11,7 +11,7 @@ These nodes communicate with each other at intervals of time and immediately whe
 <br>
 
 <div align="center">
-<img src="https://github.com/11ume/kable/blob/master/images/node_cluster.png" width="100" height="auto"/>
+<img src="https://github.com/11ume/kable/blob/master/images/node_cluster.png" width="200" height="auto"/>
 </div>
 
 <br>
