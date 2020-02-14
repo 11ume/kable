@@ -31,7 +31,7 @@
 <br>
 <br>
 
-**[Getting Started](https://github.com/11ume/kable/blob/master/docs/getting_started.md)**
+**[Getting Started](https://github.com/11ume/kable/blob/master/docs/getting_started.md)** **In progress**
 
 <br>
 

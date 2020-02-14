@@ -28,7 +28,9 @@ The first service is called **foo**, this will be your identifier inside of your
 
 <br>
 
-Note: kable does **not admits duplicate node ids**  
+> Note: kable does **not admits duplicate node ids** ⚠️
+
+**See: [duplicate node ids](#duplicate-node-ids)**
 
 <br>
 
@@ -68,7 +70,6 @@ The node with id **bar** is requested
 	* Will take the node immediately.
 
 <br>
-<br>
 
 The second service is called **bar**, and this is similar to the first, yes you are thinking that it is a cyclic referral, but we will simply ignore this for this example.
 
@@ -89,7 +90,6 @@ server.on('close', bar.down)
 server.listen(bar.port)
 ```
 
-<br>
 <br>
 
 Now surely you are wondering what is happening **under the hood**?
@@ -135,7 +135,6 @@ What happening if some node don't call the **down** method?, well, kable always 
 In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 
 <br>
-<br>
 
 #### Node sentinels
 
@@ -152,3 +151,17 @@ You can see an example of how this work, in the examples folder of this repo:
 **[Sentinel example](https://github.com/11ume/kable/tree/master/examples/sentinel)**
 
 <br>
+
+#### Duplicate node ids
+
+<br>
+
+when a node detects a duplicate node id, it emits an especial event called:
+
+* duplicate_node_id
+
+The nodes with duplicate id are ignored by all nodes that already have it in their list.
+
+
+
+
