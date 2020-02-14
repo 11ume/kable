@@ -75,10 +75,7 @@ foo.pick('bar'): Promise<NodeRegistre>
   
  
  * The **bar** service is already have a replicas.
-   * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica by applying Round Robin algorithm.
- <br>
- 
- **Note**: Each node internally contains an ordered queue of available nodes.
+   * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica by applying Round Robin algorithm. **Note**: Each node internally contains an ordered queue of available nodes.
   
  <br>
    
