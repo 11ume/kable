@@ -66,7 +66,7 @@ Now surely you are wondering what is happening **under the hood**?
 Well, kable uses **UDP Broadcast**, to locate each node inside of same subnet.
 Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed in some node. 
 
-> Note: In most production environments like Digitalocean or AWS EC2 etc, it is not possible to perform UDP brodcasting, therefore it is necessary to use an **(overlay network)[https://en.wikipedia.org/wiki/Overlay_network]**
+> Note: In most production environments like Digitalocean or AWS EC2 etc, it is not possible to perform UDP brodcasting, therefore it is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
 like those provided by docker swarm.
 
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
@@ -97,4 +97,17 @@ What happening if some node don't call the **down** method?, well, kable always 
 In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 
 <br>
+<br>
+
+#### Node sentinels
+
+<br>
+
+> A sentinel node is a especial node prepared to run with the minimum configuration. 
+His only objective is observe the status of a particular resource, such as a database or an external service, for then inform the other nodes.
+
+
+You can see an example in the examples path of this repository:
+[sentinel example](https://github.com/11ume/kable/tree/master/examples/sentinel)
+
 <br>
