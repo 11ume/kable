@@ -4,7 +4,20 @@
 
 <br>
 
+#### Installation
+
+```bash
+npm install https://github.com/11ume/kable
+```
+
+<br>
+
+> The project is under development but you can still try it.
+
+<br>
+
 #### Usage
+
 <br>
 
 In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
@@ -51,7 +64,7 @@ The node with id **bar** is requested
  
  <br>
   
-* The service is already available and is stored in the nodes registre of the service **foo**.
+* The **bar** service is already available and is stored in the nodes registre of the service **foo**.
 	* Will take the node immediately.
 
 <br>
