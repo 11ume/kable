@@ -8,6 +8,11 @@ The architecture of kable is based on a decentralized node system where each nod
 
 These nodes communicate with each other at intervals of time and immediately when a some change occurs.
 
+<br>
+
+<div align="center">
+<img src="https://github.com/11ume/kable/blob/master/images/node_cluster.png" width="100" height="auto"/>
+</div>
 
 <br>
 
