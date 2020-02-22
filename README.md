@@ -9,7 +9,7 @@
 <br>
 <br>
 
-![Node CI](https://github.com/11ume/kable-core/workflows/Node%20CI/badge.svg)
+![Build](https://github.com/11ume/kable-core/workflows/Build/badge.svg)
 [![codecov.io](https://codecov.io/github/11ume/kable-core/coverage.svg?branch=master)](https://codecov.io/github/11ume/kable-core?branch=master)
 
 <br>
