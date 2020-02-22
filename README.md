@@ -36,10 +36,6 @@
 
 <br>
 
-**[Documentation](https://github.com/11ume/kable/blob/master/docs/doc.md)** **In progress**
-
-<br>
-
 <div align="center">
 <img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
 </div>
