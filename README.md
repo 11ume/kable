@@ -11,6 +11,8 @@
 
 <div align="center">
   
+**Kable-core**
+  
 ![Build](https://github.com/11ume/kable-core/workflows/Build/badge.svg?branch=master)
 [![codecov.io](https://codecov.io/github/11ume/kable-core/coverage.svg?branch=master)](https://codecov.io/github/11ume/kable-core?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/11ume/kable-core/badge)](https://www.codefactor.io/repository/github/11ume/kable-core)
@@ -30,7 +32,7 @@
 
 **why?**
 
-> Creating and maintaining a distributed services architectures, is a very expensive process, that involves things like load balancing between services, service discovery, health checking, knowing at every moment in which state the service is, fault tolerance, replication etc. The goal of Kable is to make all this easier to do. 
+> Creating and maintaining a distributed services architectures is a very complex task, that involves things like load balancing, service discovery, health and status checking, fault tolerance, replication etc. The goal of **Kable** is to make some of these tasks easier to carry out. 
 <br>
 
 **This project is under active developement 🔥**
