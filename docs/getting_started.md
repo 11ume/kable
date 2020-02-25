@@ -84,7 +84,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-The second service is called **bar**, and this is similar to the first, yes you are thinking that it is a cyclic referral, but we will simply ignore this for this example.
+The second service is called **bar**, and this is similar to the first, surely you are thinking that it is a cyclic reference, but we will simply ignore this for this example and u can observe how theses two services are able to found each other immediately.
 
 <br>
 
