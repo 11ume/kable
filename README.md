@@ -3,7 +3,13 @@
 <br>
 
 <div align="center">
-<img src="https://github.com/11ume/kable/blob/master/images/logo.png" width="100" height="auto"/>
+    <img src="https://github.com/11ume/kable/blob/master/images/logo.png" width="100" height="auto"/>
+</div>
+
+<br>
+
+<div align="center">
+    <img src="https://github.com/11ume/kable/blob/master/images/status.png" width="100" height="auto"/>
 </div>
 
 <br>
