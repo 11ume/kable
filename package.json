@@ -39,7 +39,7 @@
     "typescript": "^3.7.5"
   },
   "devDependencies": {
-    "ava": "2.4.0",
+    "ava": "3.4.0",
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0"
   }
