@@ -33,7 +33,7 @@
 **Kable** — Is a decentralized discovery service and load balancer system for Node.js
 <br>
 
-> An simple and pretty alternative to others centralized systems which involve complex architectures. 
+> A **simple and pretty alternative** to others centralized systems, which involve complex architectures. 
 <br>
 
 **why?**
