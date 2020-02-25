@@ -9,7 +9,9 @@
 <br>
 
 <div align="center">
-    <img src="https://github.com/11ume/kable/blob/master/images/status.png" />
+    <a href="https://github.com/11ume/kable-core">
+        <img src="https://github.com/11ume/kable/blob/master/images/status.png" width="auto" height="auto"/>
+    </a>
 </div>
 
 <br>
