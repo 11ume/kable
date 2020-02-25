@@ -9,15 +9,13 @@
 <br>
 
 <div align="center">
-    <img src="https://github.com/11ume/kable/blob/master/images/status.png" width="100" height="auto"/>
+    <img src="https://github.com/11ume/kable/blob/master/images/status.png" />
 </div>
 
 <br>
 <br>
 
 <div align="center">
-  
-**Kable-core**
   
 ![Build](https://github.com/11ume/kable-core/workflows/Build/badge.svg?branch=master)
 [![codecov.io](https://codecov.io/github/11ume/kable-core/coverage.svg?branch=master)](https://codecov.io/github/11ume/kable-core?branch=master)
