@@ -19,22 +19,8 @@
     "prepublishOnly": "npm run lint & npm run test & npm run build",
     "postinstall": "npm run build"
   },
-  "ava": {
-    "compileEnhancements": false,
-    "concurrency": 6,
-    "cache": true,
-    "files": [
-      "!dist",
-      "!dev"
-    ],
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
-  },
   "dependencies": {
+    "@ava/babel": "^1.0.1",
     "kable-core": "https://github.com/11ume/kable-core.git",
     "typescript": "^3.7.5"
   },
