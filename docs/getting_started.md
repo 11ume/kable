@@ -6,7 +6,17 @@
 
 The architecture of kable is based on a decentralized node system where each node have in memory record of the location and status of the other nodes that are in his same cluster.
 
-These nodes communicate with each other at intervals of time and immediately when a some change occurs.
+* The main objective of **Kable** is to facilitate the service discovery process
+* Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, it may seem unattractive in a first impression but, **what benefits have it?**
+  * Is highly fault tolerant, by his decentralized nature. 
+  * Don't require nothing outside of **Node.js** ecosystem. 
+  * No extra hops, in a decentralized system many request are made to achieve something simple, this is very expensive in terms of performance, resource consumption and add network traffic noise. 
+
+
+When you implement **Kable** in your service, this happens to be called node 
+
+These nodes communicate with each others in intervals of time and immediately when a some change occurs. This is done to know what state the other nodes are in and to know his location in form automatically.
+
 
 <br>
 <br>
