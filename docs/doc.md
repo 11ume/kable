@@ -18,9 +18,11 @@ import kable from 'kable'
 kable(id?: string, options?: Options): Kable
 
 // example
-const foo = kable('foo')
+const foo = kable('foo', { port: 4500 })
 ```
+
 <br>
+
 
 #### Constructor options
 
@@ -108,9 +110,9 @@ up(): Promise<void>
 down(): Promise<void>
 ```
 
-> Set that node in running state 
-
 <br>
+
+> Set that node in running state 
 
 ```ts
 start(): void
@@ -150,6 +152,8 @@ pick(id: string, options?: PickOptions): Promise<NodeRegistre>
 ```ts
 suscribe(id: string, fn: SuscriberFn): void
 ```
+
+<br>
 
 > Stop listening events.
 
