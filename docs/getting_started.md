@@ -17,7 +17,6 @@ Once they implement **Kable** in some service, is turned into a **node**, since 
 These nodes send messages to the other nodes to inform about their state of health their location,metadata, and other things, these messages are sent in time intervals.
 
 
-
 <br>
 <br>
 
