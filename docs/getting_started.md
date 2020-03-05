@@ -203,11 +203,16 @@ The method **down**, stops all cable tasks, and will set the node in the latest 
 
 <br>
 
-What happening if some node don't call the **down** method?, well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
+What happening if some node don't call the **down** method?
+
+> Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
 
 <br>
 
-In the case of an controlled closing be invoked or an abrupt closure is never be emitted, each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
+What happens if nothing of this occurs, what would be the state of the node in the registry of the other nodes.
+
+> This would be the worst that could happen since the node would remain in its last state until it was removed from the records, there is no way to predict that a node will stop working whit anticipation, can be innumerable factors those who could generate this. But each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
+> In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
 
 <br>
 
