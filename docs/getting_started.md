@@ -2,20 +2,29 @@
 
 ### Getting started
 
+<br>
+
 #### First impressions and goals
 
+<br>
+
 The architecture of kable is based on a decentralized service system where each service have in his memory an record of the location and status of all others services that are in his same cluster.
+
+<br>
 
 * The main objective of **Kable** is to facilitate the service discovery process.
 * Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, it may seem unattractive in a first impression but, **what benefits have it?**
   * Is highly fault tolerant, by his decentralized nature. 
   * Don't require install nothing outside of **Node.js** ecosystem. 
+  * You don't need to worry by complex configurations.
   * No extra hops, in a decentralized system many request are made to achieve something simple task, this is very expensive in terms of performance, resource consumption and add network traffic noise.
 * Why kable owns a load balacer system?
-  * Why kable must be support node replication.  
-  * The architecture of Kable system depends obligatorily of one to work.
-  * The load balancer works in conjunction with the service discovery system, if they are together they can work really fast.
+  * Why kable must be support node replication. **[See this part](#possibles-scenarios)**  
   * You don't need to worry about setting up anything, the load balancer is smart.
+  * The architecture of Kable system depends obligatorily of one to work.
+  * The load balancer works in conjunction with the service discovery system, if they are together they can work very fast.
+
+<br>
   
 Once they implement **Kable** in some service, is turned into a **node**, since it now starts to be a part of a network of connected nodes.
 
@@ -27,30 +36,36 @@ These nodes send messages to the other nodes to inform about their state of heal
 
 <br>
 
-```json
-id: "foo"
-, host: "192.168.0.2"
-, port: 3000
-, hostname: "DESKTOP-3MFPTDD"
-, state: "RUNNING"
-, ensured: false
-, ignorable: false
-, adTime: 2000
-, event: "advertisement"
-, iid: "621a334f-c748-47bd-9f9b-a926d7619a77"
-, pid: "e993539d-bb12-45e5-beff-b9f1d8da470b"
-, index: 16160494567343020000
-, replica: {
-  is: false
-}
-, stateData: {
-  time: 1583383484
-}
-, rinfo: {
-  address: "192.168.0.2"
-  , family: "IPv4"
-  , port: 5000
-  , size: 255
+```js
+{
+    id: 'foo'
+    , host: '192.168.0.1'
+    , port: 3000
+    , meta: {
+       id: 'foo-service'
+       , description: 'is a cool service called foo'
+    }
+    , hostname: 'DESKTOP-3MFPTDD'
+    , state: 'RUNNING'
+    , ensured: false
+    , ignorable: false
+    , adTime: 2000
+    , event: 'advertisement'
+    , iid: '621a334f-c748-47bd-9f9b-a926d7619a77'
+    , pid: 'e993539d-bb12-45e5-beff-b9f1d8da470b'
+    , index: 16160494567343020000
+    , replica: {
+        is: false
+    }
+    , stateData: {
+        time: 1583383484
+    }
+    , rinfo: {
+        address: '192.168.0.1'
+        , family: 'IPv4'
+        , port: 5000
+        , size: 255
+    }
 }
 ```
 
@@ -81,7 +96,7 @@ The first service is called **foo**, this will be your identifier inside of your
 
 <br>
 
-> Note: kable does **not admits duplicate node ids** ⚠️
+> Note: kable does **not admits duplicate node ids, avoid this** ⚠️
 
 **See: [duplicate node ids](#duplicate-node-ids)**
 
@@ -112,7 +127,9 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-> Possibles scenarios
+#### Possibles scenarios
+
+<br>
 
 * The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
@@ -214,11 +231,22 @@ You can see an example of how this work, in the examples folder of this repo:
 
 <br>
 
-when a node detects a duplicate node id, it emits an especial event called:
+when a node detects a duplicate node id, it emits an **error** event called
 
-* duplicate_node_id
+> duplicate_node_id
 
-The nodes with duplicate id are ignored by all nodes that already have it in their list.
+The nodes with duplicate id are ignored by all nodes that already have its in their list.
+You can capture this event using [Capturing the error that is emitted using the kable internals module](https://github.com/11ume/kable-core):
+
+```ts
+foo.on('err', ({ event })) => event.duplicate_node_id === 'duplicate_node_id' && console.log(event))
+```
+
+> Also with the vscode kable tool you will be able to visualize it.
+
+
+
+
 
 
 
