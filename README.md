@@ -41,20 +41,21 @@
 > Creating and maintaining a distributed services architectures is a very complex task, that involves things like load balancing, service discovery, health and status checking, fault tolerance, replication etc. The goal of **Kable** is to make some of these tasks easier to carry out. 
 <br>
 
-**This project is under active developement 🔥**
+**This project is in alfa state 🔥**
 
 <br>
-<br>
 
-**[Getting Started](https://github.com/11ume/kable/blob/master/docs/getting_started.md)** **In progress**
+## **[Getting Started](https://github.com/11ume/kable/blob/master/docs/getting_started.md)** 
+
+### **[Documentation](https://github.com/11ume/kable/blob/master/docs/doc.md)** 
 
 <br>
 
 <div align="center">
-<img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
+    <img src="https://github.com/11ume/kable/blob/master/images/nodes.png" width="300" height="auto"/>
 </div>
-<br>
 
+<br>
 
 ## Main features
 
@@ -77,6 +78,7 @@ and is administered before it is requested.
 <br>
 
 #### kable is constituted by a series of modules, tools and special nodes called sentries nodes:
+
 <br>
 <br>
 
