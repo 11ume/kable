@@ -15,7 +15,7 @@ The architecture of kable is based on a decentralized node system where each nod
 
 When you implement **Kable** in your service, this happens to be called node 
 
-These nodes communicate with each others in intervals of time and immediately when a some change occurs. This is done to know what state the other nodes are in and to know his location in form automatically.
+These nodes communicate with each others in intervals of time and immediately when a some change occurs. This is done to know what state the other nodes are in, and to know his location automatically.
 
 
 <br>
