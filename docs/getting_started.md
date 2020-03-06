@@ -17,16 +17,16 @@
 - **[What are sentinel nodes](#node-sentinels)**
 
 - **[What are the node states](#node-state)** 
-  - **[State transitions methods](#state-transitions-methods)**
-  - **[State transitions table](#state-transitions-table)**
+  * **[State transitions methods](#state-transitions-methods)**
+  * **[State transitions table](#state-transitions-table)**
 
 - **[How create a node replicas](#how-create-a-node-replicas)** 
 
 - **[The service discovery](#the-service-discovery)**
-  - **[How discovery service works](#how-discovery-service-works)**
-  - **[Lifecycle](#lifecycle)**
-  - **[What happens if some node don't call the **down** method](#what-happens-if-some-node-don't-call-the-**down**-method)**
-  - **[What happens if a node stops working abruptly or by singal kill](#what-happens-if-a node-stops-working-abruptly-or-by-singal-kill)**
+  * **[Lifecycle](#lifecycle)**
+  * **[How discovery service works](#how-discovery-service-works)**
+  * **[What happens if some node don't call the **down** method](#what-happens-if-some-node-don't-call-the-**down**-method)**
+  * **[what happens if a node stops working abruptly or by singal kill](#what-happens-if-a-node-stops-working-abruptly-or-by-singal-kil)**
 
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
@@ -368,16 +368,21 @@ Each nodes send and recibe messages to the other nodes to inform about their sta
 > Important note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
 like those provided by **Docker Swarm**, **Kubernates**. In a future Kable could solve this problem by implementing a protocol called **[SWIM](https://www.brianstorti.com/swim/)**
 
+<br>
+
 ### Lifecycle
 
+<br>
+
 The discovery service starts working when the **up** method is invoked, and ends when the **down** method is called.
+
+<br>
 
 ### What happens if some node don't call the **down** method?
 
 > Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happens, and will issue the termination status **down**, with the signal and the exit code.
 
 <br>
-
 
 ### what happens if a node stops working abruptly or by singal kill
 
