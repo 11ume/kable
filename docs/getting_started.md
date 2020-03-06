@@ -1,10 +1,10 @@
 <br>
 
-### Getting started
+## Getting started
 
 <br>
 
-#### First impressions and goals
+### First impressions and goals
 
 <br>
 
@@ -32,7 +32,7 @@ These nodes send messages to the other nodes to inform about their state of heal
 
 <br>
 
-#### What does one of these messages look like?
+### What does one of these messages look like?
 
 <br>
 
@@ -72,7 +72,7 @@ These nodes send messages to the other nodes to inform about their state of heal
 <br>
 <br>
 
-#### Installation
+### Installation
 
 ```bash
 npm install https://github.com/11ume/kable
@@ -84,7 +84,7 @@ npm install https://github.com/11ume/kable
 
 <br>
 
-#### Usage
+### Usage
 
 <br>
 
@@ -127,7 +127,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-#### Possibles scenarios after requesting a node
+### Possibles scenarios after requesting a node
 
 * The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
@@ -212,7 +212,7 @@ What happens if nothing of this occurs, what would be the state of the node in t
 
 <br>
 
-#### Node state
+### Node state
 
 > Each node contains a states machine, with five possible states
 
@@ -258,7 +258,7 @@ for a distributed service system.
 
 <br>
 
-#### Duplicate node ids
+### Duplicate node ids
 
 when a node detects a duplicate node id, it emits an **error** event called
 
@@ -275,7 +275,7 @@ foo.on('err', ({ event })) => event.duplicate_node_id === 'duplicate_node_id' &&
 
 <br>
 
-#### Node sentinels
+### Node sentinels
 
 > A sentinel node is a especial node prepared to run with the minimum configuration. 
 His only objective is observe the status of a particular resource, such as a database or an external service, for then inform the other nodes.
