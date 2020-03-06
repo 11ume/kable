@@ -18,6 +18,8 @@
 
 - **[What are the node states](#node-state)** 
 
+- **[How create a node replicas](#how-create-a-node-replicas)** 
+
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
 <br>
@@ -151,7 +153,7 @@ foo.pick('bar'): Promise<NodeRegistre>
   
  <br>
 
-**Note:** The next scenarios are the most probable and fastest scenarios, if everything is working correctly.
+**Note:** If everything is working normally, correctly and redundant, the next scenarios going to be the most probable and fastest.
  
 * Exist multiple replicas of the **bar** service.
    * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica applying Round Robin algorithm. Each node internally contains an ordered queue of available nodes.
@@ -277,6 +279,8 @@ for a distributed service system.
 
 ### Duplicate node ids
 
+<br>
+
 when a node detects a duplicate node id, it emits an **error** event called
 
 > duplicate_node_id
@@ -304,6 +308,44 @@ You can see an example of how this work, in the examples folder of this repo:
 **[Sentinel example](https://github.com/11ume/kable/tree/master/examples/sentinel)**
 
 <br>
+
+### Node replicas
+
+<br>
+
+> The replica nodes are and work in the same way as all the systems you already know.
+
+This is where the load balancer and service discovery system come into play.
+You just have to tell Kable two things, then he will do all the smart work for you:
+
+<br>
+
+1. The first indicate the id **"foo"**.
+2. The second will be set the replica property in true **{ replica: true }**.
+
+<br>
+
+> The first node is called **foo**
+```typescript
+const foo = kable('foo')
+foo.up()
+```
+
+<br>
+
+> The second node is **replica of foo**
+```typescript
+const foo = kable('foo', { replica: true })
+foo.up()
+```
+
+Now we have a node called foo and its replica working, soo easy right?.
+
+<br>
+<br>
+
+
+
 
 
 
