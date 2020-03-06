@@ -15,7 +15,7 @@
 
 - **[First impressions and goals](#first-impressions-and-goals)**
 
-- **[What are sentinel nodes](#node-sentinels)**
+- **[what is a sentinel node](#node-sentinels)**
 
 - **[What are the node states](#node-state)** 
   * **[State transitions methods](#state-transitions-methods)**
