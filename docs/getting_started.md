@@ -25,7 +25,7 @@
 - **[The service discovery](#the-service-discovery)**
   * **[Lifecycle](#lifecycle)**
   * **[Fault tolerance](#fault-tolerance)**
-  * **[How discovery service works](#how-discovery-service-works)**
+  * **[How the discovery service works](#how-the-discovery-service-works)**
 
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
@@ -357,20 +357,31 @@ Now we have a node called foo and its replica working, soo easy right?.
 
 <br>
 
-### How discovery service works?
+### How the discovery service works?
 
 <br>
 
 The service discovery system is really fast and automatic.
 
-> kable uses **UDP Broadcast method** whit a [Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address), by default 255.255.255.0, to locate each node inside of same subnet.
+> kable uses **UDP Broadcast method** whit a [Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address), by default 255.255.255.0, to locate each node inside of same network.
 Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
+
+> Each node keeps a record in his memory of all nodes that are found in his same network, this record is updated periodically.
 
 > For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
 
+> The messages are emitted every time an event is triggered:
+
+  * **update**
+    * Is emitted when the node change of state. 
+  * **unregistre**
+    * Is emitted when a node informs that it will unsubscribe.
+  * **advertisement**
+    * Is emitted periodically to inform in what state it is, similar to a health check.
+
 <br>
 
-**Node:** Kable also supports unicast and multicast, but it is recommended that you use broadcast.
+**Note:** Kable also supports unicast and multicast, but it is recommended that you use broadcast.
 
 <br>
 
