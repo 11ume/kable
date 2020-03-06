@@ -471,8 +471,42 @@ The discovery service starts to working when the **up** method is invoked, and e
 
 <br>
 
-#### The messages
 #### Security
+
+**kable** handles the security of the messages it emits and receives through encryption.
+As explained above, **Kable** emits UDP messages via the broadcast method, by default these messages travel in plain text. 
+
+And anyone who is on the same network, will be able to read and modify these messages using [MitM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attack.
+
+To mitigate this, **Kable** implements the encryption of each message that is emitted applying **[AES CBC 256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)** algorithm.
+
+*This will not prevent you from being a victim of a **MitM** attack, but the attacker will not be able to read the messages or modify them*.
+
+<br>
+
+> For example you can use openssl bash command to generates 32 random bytes (256 bits) key.
+
+```bash
+openssl rand -base64 32
+```
+
+<br>
+
+> This node now will encrypt all his messages, and rejects all messages coming from other nodes that do not have the same key.
+```typescript
+const foo = kable('foo', { key: 'x4wl1vHLBcENpF+vbvnyWqYbNyZ1xUjNDZYAbLROTLE='})
+foo.up()
+```
+
+<br>
+
+> The best way to create keys and manage them is using tools like **[Vault](https://www.vaultproject.io/)**.
+*You can devise your own way of sharing the keys but make sure it is safe*.
+
+<br>
+<br>
+
+#### The messages
 #### The load balancer
 #### Interact whit deep logic of kable
 
