@@ -6,17 +6,19 @@
 
 ### Table of Contents
 
-**[Usage](#Usage)** 
+<br>
 
-**[Installation](#installation)** 
+- **[Usage](#Usage)** 
 
-**[First impressions and goals](#first-impressions-and-goals)**
+- **[Installation](#installation)** 
 
-**[What are sentinel nodes](#node-sentinels)**
+- **[First impressions and goals](#first-impressions-and-goals)**
 
-**[What are the node states](#node-state)** 
+- **[What are sentinel nodes](#node-sentinels)**
 
-**[What happens when duplicate nodes are found](#duplicate-node-ids)** 
+- **[What are the node states](#node-state)** 
+
+- **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
 <br>
 
