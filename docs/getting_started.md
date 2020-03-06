@@ -13,6 +13,8 @@
 - **[Installation](#installation)** 
 
 - **[First impressions and goals](#first-impressions-and-goals)**
+- 
+- **[Getting a node](#getting-a-node)**
 
 - **[What are sentinel nodes](#node-sentinels)**
 
@@ -144,7 +146,14 @@ server.listen(foo.port)
 
 <br>
 
-The **foo** node request the updated information and location of **bar** node
+#### Getting a node
+
+<br>
+
+*The pick method is used to get the information of some node in particular.* 
+> This method must be invoked for example: every time a request is made to another node. To know where he is located (ip:port) and know about his status.
+
+<br>
 
 ``` typescript
 foo.pick('bar'): Promise<NodeRegistre> 
@@ -154,20 +163,20 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 ### Possibles scenarios after requesting a node
 
-* The **bar** service has not yet started or is in a state of unavailable.
-  * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
-  
- <br>
-
-**Note:** If everything is working normally, correctly and redundant, the next scenarios going to be the most probable and fastest.
- 
-* Exist multiple replicas of the **bar** service.
-   * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica applying Round Robin algorithm. Each node internally contains an ordered queue of available nodes.
-  
 <br>
 
-* The **bar** service is already available and is stored in the nodes registre of the service **foo**.
+- The **bar** service has not yet started or is in a state of unavailable.
+  * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
+  
+- Exist multiple replicas of the **bar** service.
+   * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica applying Round Robin algorithm. Each node internally contains an ordered queue of available nodes.
+  
+- The **bar** service is already available and is stored in the nodes registre of the service **foo**.
   * Will take the node immediately.
+
+<br>
+
+***Note:** If everything is working normally, correctly and redundant, the second and the third scenarios going to be the most probable and fastest.*
 
 <br>
 
@@ -196,7 +205,43 @@ Now surely you are wondering what is happening **under the hood**?
 
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
-by default **5 minutes**, This operation may be aborted when you deem it necessary.
+by default **5 minutes**. 
+This operation may be aborted when you deem is necessary, using a especial utility created by me [op-abort](https://github.com/11ume/op-abort).
+
+<br>
+
+*Unfortunately the promises do not have a native logic of cancellation, to canceled it, is necessary to use external tools*
+
+<br>
+
+```bash
+npm install op-abort
+```
+
+<br>
+
+```typescript
+import kable from 'kable'
+import oa from 'op-abort'
+
+(async function() {
+    const foo = kable('foo')
+    await foo.up()
+
+    const opAbort = oa()
+    await foo.pick('non-existent-node', { opAbort })
+
+    setTimeout(opAbort.abort, 1000)
+    console.log('This runs after 5 seconds')
+}())
+
+```
+
+<br>
+
+*We have requested a node that does not exist, so the **pick** method will wait 5 seconds until the  non-existent-node until it is announced, and this will never happens. In somes contexts like the shown in the previous example, the pick method could block the process for 5 seconds and whitout op-abort, you would have no way to cancel the operation*
+
+<br>
 
 To understand that other magic 🧙 things are happening see: **[The service discovery](#the-service-discovery)**
 
@@ -424,9 +469,9 @@ The discovery service starts to working when the **up** method is invoked, and e
 
 <br>
 
+#### The messages
 #### Security
 #### The load balancer
-#### The messages
 
 
 
