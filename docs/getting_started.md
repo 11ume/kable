@@ -22,6 +22,12 @@
 
 - **[How create a node replicas](#how-create-a-node-replicas)** 
 
+- **[The service discovery](#the-service-discovery)**
+  - **[How discovery service works](#how-discovery-service-works)**
+  - **[Lifecycle](#lifecycle)**
+  - **[What happens if some node don't call the **down** method](#what-happens-if-some-node-don't-call-the-**down**-method)**
+  - **[What happens if a node stops working abruptly or by singal kill](#what-happens-if-a node-stops-working-abruptly-or-by-singal-kill)**
+
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
 <br>
@@ -42,7 +48,7 @@ The architecture of kable is based on a decentralized service system where each 
   * You don't need to worry by complex configurations.
   * No extra hops, in a decentralized system many request are made to achieve something simple task, this is very expensive in terms of performance, resource consumption and add network traffic noise.
 * Why kable owns a load balacer system?
-  * Why kable must be support node replication. **[See this part](#possibles-scenarios)**  
+  * Why kable must be support node replication. 
   * You don't need to worry about setting up anything, the load balancer is smart.
   * The architecture of Kable system depends obligatorily of one to work.
   * The load balancer works in conjunction with the service discovery system, if they are together they can work very fast.
@@ -50,8 +56,6 @@ The architecture of kable is based on a decentralized service system where each 
 <br>
   
 Once they implement **Kable** in some service, is turned into a **node**, since it now starts to be a part of a network of connected nodes.
-
-These nodes send messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **2 seconds**.
 
 <br>
 
@@ -191,18 +195,6 @@ server.listen(bar.port)
 
 Now surely you are wondering what is happening **under the hood**?
 
-<br>
-
-Well, kable uses **UDP Broadcast**, to locate each node inside of same subnet.
-Each node sends and receives information on his location and current status every certain time, or immediately when a status update is performed in some node. 
-
-<br>
-
-> Note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
-like those provided by **Docker Swarm**. In a future Kable could solve this problem by implementing a protocol called **[SWIM](https://www.brianstorti.com/swim/)**
-
-<br>
-
 The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary.
@@ -210,25 +202,6 @@ by default **5 minutes**, This operation may be aborted when you deem it necessa
 <br> 
 
 * Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica, This is really **fast** and that's where the speed of kable lies.
-
-<br> 
-
-The method **up**, will puts kable to work and set the node in the second state called **running**.
-
-The method **down**, stops all cable tasks, and will set the node in the latest state called **down**. 
-
-<br>
-
-What happening if some node don't call the **down** method?
-
-> Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
-
-<br>
-
-What happens if nothing of this occurs, what would be the state of the node in the registry of the other nodes.
-
-> This would be the worst that could happen since the node would remain in its last state until it was removed from the records, there is no way to predict that a node will stop working whit anticipation, can be innumerable factors those who could generate this. But each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
-> In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
 
 <br>
 
@@ -380,8 +353,45 @@ foo.up()
 Now we have a node called foo and its replica working, soo easy right?.
 
 <br>
+
+### The Service discovery
+
 <br>
 
+### How discovery service works?
+
+kable uses **UDP Broadcast method**, to locate each node inside of same subnet.
+Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
+
+<br>
+
+> Important note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
+like those provided by **Docker Swarm**, **Kubernates**. In a future Kable could solve this problem by implementing a protocol called **[SWIM](https://www.brianstorti.com/swim/)**
+
+### Lifecycle
+
+The discovery service starts working when the **up** method is invoked, and ends when the **down** method is called.
+
+### What happens if some node don't call the **down** method?
+
+> Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happens, and will issue the termination status **down**, with the signal and the exit code.
+
+<br>
+
+
+### what happens if a node stops working abruptly or by singal kill
+
+> This would be the worst that could happen since the node would remain in its last state until it was removed from the records, there is no way to predict that a node will stop working whit anticipation, can be innumerable factors those who could generate this. But each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
+> In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
+
+<br>
+
+<br>
+
+#### Security
+#### The load balancer
+#### The messages
+#### The messages
 
 
 
