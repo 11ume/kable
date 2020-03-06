@@ -119,7 +119,7 @@ server.listen(foo.port)
 
 <br>
 
-The **foo** node requests the updated information and location of **bar** node
+The **foo** node request the updated information and location of **bar** node
 
 ``` typescript
 foo.pick('bar'): Promise<NodeRegistre> 
@@ -127,20 +127,20 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-#### Possibles scenarios
-
-<br>
+#### Possibles scenarios after requesting a node
 
 * The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
   
  <br>
+
+**Note:** The next scenarios are the most probable and fastest scenarios, if everything is working correctly.
  
- * Exist multiple replicas of the **bar** service.
+* Exist multiple replicas of the **bar** service.
    * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica applying Round Robin algorithm. Each node internally contains an ordered queue of available nodes.
   
- <br>
-   
+<br>
+
 * The **bar** service is already available and is stored in the nodes registre of the service **foo**.
   * Will take the node immediately.
 
@@ -199,10 +199,6 @@ The method **down**, stops all cable tasks, and will set the node in the latest 
 
 <br>
 
-> **Note**: Each node contains a states machine, with five possible states: **up** - **running** - **doing** - **stopped** - **down**.
-
-<br>
-
 What happening if some node don't call the **down** method?
 
 > Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happening, and will issue the termination status **down**, with the signal and the exit code.
@@ -216,25 +212,53 @@ What happens if nothing of this occurs, what would be the state of the node in t
 
 <br>
 
-#### Node sentinels
+#### Node state
+
+> Each node contains a states machine, with five possible states
 
 <br>
 
-> A sentinel node is a especial node prepared to run with the minimum configuration. 
-His only objective is observe the status of a particular resource, such as a database or an external service, for then inform the other nodes.
-
-
-You can see an example of how this work, in the examples folder of this repo:
+**Note:** As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transaction not allowed will invoke an expression**.
 
 <br>
 
-**[Sentinel example](https://github.com/11ume/kable/tree/master/examples/sentinel)**
+| States          | Possible transitions                       |
+| --------------- | ------------------------------------------ |
+| UP              | RUNNING - DOING_SOMETHING - STOPPED - DOWN |
+| DOWN            | UP                                         |
+| RUNNING         | DOING_SOMETHING - STOPPED - DOWN           |
+| STOPPED         | DOING_SOMETHING - RUNNING - DOWN           |
+| DOING_SOMETHING | DOING_SOMETHING - RUNNING - STOPPED - DOWN |
+
+<br>
+
+You will surely use other tools to monitor the status of your nodes, like PM2 but it is not enough 
+for a distributed service system.
+
+* Is of critical order and necessary react before the things happens, for this kable need know in what state are the nodes with great pressicion.
+* The load balancing system needs to know what state the nodes are in to work well and faster.
+* You and the visualization and control systems, need to know what state your nodes are in.
+* Kable needs to know when must be start, stop, when to warn that a node is very busy or overloaded.
+
+<br>
+
+*The states:*
+
+* **UP**: This is normally the initial state.
+  * Indicates that the node has started to work but, it is still not serving.
+* **RUNNING**: This is normally the second state after up, and the first that must be invoked after any of the others.
+  * Indicates that the node totally operative and is ready to serve. 
+* **STOPPED**: This state is invoqued when you need to stop the node for some reason.
+  * Indicates that node is stopped and not serving. 
+* **DOING_SOMETHING**: This state is invoqued when you need indicate that node is doing something and is not ready for serve, for example:
+  * A use case would be when the node is waiting for another node or external service.
+  * Other, can be when the node event loop is overloaded, or prone to overload.
+* **DOWN**: This state is always the last state.
+  * Indicates that node is totally stopped and inoperative. 
 
 <br>
 
 #### Duplicate node ids
-
-<br>
 
 when a node detects a duplicate node id, it emits an **error** event called
 
@@ -248,6 +272,21 @@ foo.on('err', ({ event })) => event.duplicate_node_id === 'duplicate_node_id' &&
 ```
 
 > Also with the vscode kable tool you will be able to visualize it.
+
+<br>
+
+#### Node sentinels
+
+> A sentinel node is a especial node prepared to run with the minimum configuration. 
+His only objective is observe the status of a particular resource, such as a database or an external service, for then inform the other nodes.
+
+You can see an example of how this work, in the examples folder of this repo:
+
+<br>
+
+**[Sentinel example](https://github.com/11ume/kable/tree/master/examples/sentinel)**
+
+<br>
 
 
 
