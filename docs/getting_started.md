@@ -9,12 +9,11 @@
 <br>
 
 - **[Usage](#Usage)** 
+  * **[Getting a node](#getting-a-node)**
 
 - **[Installation](#installation)** 
 
 - **[First impressions and goals](#first-impressions-and-goals)**
-
-- **[Getting a node](#getting-a-node)**
 
 - **[What are sentinel nodes](#node-sentinels)**
 
