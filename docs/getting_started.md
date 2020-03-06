@@ -198,6 +198,8 @@ The first thing that is done when the **pick** method is called, is look for the
 If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
 by default **5 minutes**, This operation may be aborted when you deem it necessary.
 
+To understand that other magic 🧙 things are happening see: **[The service discovery](#the-service-discovery)**
+
 <br> 
 
 * Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica, This is really **fast** and that's where the speed of kable lies.
@@ -415,7 +417,7 @@ The discovery service starts to working when the **up** method is invoked, and e
 
 <br>
 
-#### what happens if a node stops working abruptly whit out singal kill
+#### what happens if a node stops working abruptly whit out singal kill?
 
 > This would be the worst that could happen since the node would remain in its last state until it was removed from the records, there is no way to predict that a node will stop working whit anticipation, can be innumerable factors those who could generate this. But each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 > In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
