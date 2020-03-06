@@ -359,15 +359,23 @@ Now we have a node called foo and its replica working, soo easy right?.
 
 ### How discovery service works?
 
-kable uses **UDP Broadcast method**, to locate each node inside of same subnet.
+<br>
+
+The service discovery system is really fast and automatic.
+
+> kable uses **UDP Broadcast method** whit a [Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address), by default 255.255.255.0, to locate each node inside of same subnet.
 Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
 
-For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
+> For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
 
 <br>
 
-> Important note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
-like those provided by **Docker Swarm**, **Kubernates**. In a future Kable could solve this problem by implementing a protocol called **[SWIM](https://www.brianstorti.com/swim/)**
+**Node:** Kable also supports unicast and multicast, but it is recommended that you use broadcast.
+
+<br>
+
+> **Important note**: In most of production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
+like those provided by **Docker Swarm**, **Kubernates**. In a future Kable could solve this problem by implementing a protocol called **[SWIM](https://www.brianstorti.com/swim)**.
 
 <br>
 
@@ -375,11 +383,13 @@ like those provided by **Docker Swarm**, **Kubernates**. In a future Kable could
 
 <br>
 
-The discovery service starts working when the **up** method is invoked, and ends when the **down** method is called.
+The discovery service starts to working when the **up** method is invoked, and ends when the **down** method is called.
 
 <br>
 
 ### Fault tolerance
+
+<br>
 
 #### What happens if some node don't call the **down** method?
 
@@ -393,11 +403,9 @@ The discovery service starts working when the **up** method is invoked, and ends
 > In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
 
 <br>
-<br>
 
 #### Security
 #### The load balancer
-#### The messages
 #### The messages
 
 
