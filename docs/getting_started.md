@@ -345,6 +345,9 @@ The nodes with duplicate id are ignored by all nodes that already have its in th
 You can capture this event using [Capturing the error that is emitted using the kable internals module](https://github.com/11ume/kable-core):
 
 ```ts
+import kableInternals from 'kable-internals'
+
+const foo = kableInternals('foo')
 foo.on('err', ({ event })) => event.duplicate_node_id === 'duplicate_node_id' && console.log(event))
 ```
 
@@ -471,6 +474,7 @@ The discovery service starts to working when the **up** method is invoked, and e
 #### The messages
 #### Security
 #### The load balancer
+#### Interact whit deep logic of kable
 
 
 
