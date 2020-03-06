@@ -30,6 +30,9 @@
 
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
+- **[Security](#security)** 
+
+
 <br>
 
 ### First impressions and goals
@@ -406,15 +409,11 @@ Now we have a node called foo and its replica working, soo easy right?.
 
 <br>
 
-### How the discovery service works?
+#### How the discovery service works?
 
 <br>
 
 The service discovery system is really fast and automatic.
-
-<br>
-
-### How that works?
 
 <br>
 
@@ -471,7 +470,9 @@ The discovery service starts to working when the **up** method is invoked, and e
 
 <br>
 
-#### Security
+### Security
+
+<br>
 
 **kable** handles the security of the messages it emits and receives through encryption.
 As explained above, **Kable** emits UDP messages via the broadcast method, by default these messages travel in plain text. 
