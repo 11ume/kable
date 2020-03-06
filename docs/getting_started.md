@@ -17,6 +17,8 @@
 - **[What are sentinel nodes](#node-sentinels)**
 
 - **[What are the node states](#node-state)** 
+  - **[State transitions methods](#state-transitions-methods)**
+  - **[State transitions table](#state-transitions-table)**
 
 - **[How create a node replicas](#how-create-a-node-replicas)** 
 
@@ -33,6 +35,7 @@ The architecture of kable is based on a decentralized service system where each 
 <br>
 
 * The main objective of **Kable** is to facilitate the service discovery process.
+* Kable is designed to not emit exceptions when it is in operation, they can only occur on very important occasions.
 * Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, it may seem unattractive in a first impression but, **what benefits have it?**
   * Is highly fault tolerant, by his decentralized nature. 
   * Don't require install nothing outside of **Node.js** ecosystem. 
@@ -212,8 +215,6 @@ by default **5 minutes**, This operation may be aborted when you deem it necessa
 
 The method **up**, will puts kable to work and set the node in the second state called **running**.
 
-<br>
-
 The method **down**, stops all cable tasks, and will set the node in the latest state called **down**. 
 
 <br>
@@ -233,11 +234,48 @@ What happens if nothing of this occurs, what would be the state of the node in t
 
 ### Node state
 
+<br>
+
 > Each node contains a states machine, with five possible states
+A node can change of state using the following methods:
+
+#### State transitions methods
 
 <br>
 
-**Note:** As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transaction not allowed will invoke an expression**.
+```typescript
+const foo = kable('foo')
+
+foo.up()
+foo.start()
+foo.stop()
+foo.doing()
+foo.down()
+```
+<br>
+
+**Note:** The **up** method can receive a boolean argument, the default is true. 
+When this method is invoked his places the node in the running state, is simply so you don't have to invoke **up** method and then **start**, maybe it may not make sense to you in this moment, but in another context you will need it.
+
+<br>
+
+```typescript
+const foo = kable('foo')
+foo.up(false) // start kable in up state 
+```
+<br>
+
+```typescript
+const foo = kable('foo')
+foo.up() // start kable in running state
+```
+<br>
+
+As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transaction not allowed will invoke an expression**.
+
+<br>
+
+#### State transitions table
 
 <br>
 
