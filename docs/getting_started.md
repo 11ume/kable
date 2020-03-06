@@ -323,11 +323,11 @@ for a distributed service system.
   * Indicates that the node has started to work but, it is still not serving.
 * **RUNNING**: This is normally the second state after up, and the first that must be invoked after any of the others.
   * Indicates that the node totally operative and is ready to serve. 
-* **STOPPED**: This state is invoqued when you need to stop the node for some reason.
+* **STOPPED**: This state is invoked when you need to stop the node for some reason.
   * Indicates that node is stopped and not serving. 
-* **DOING_SOMETHING**: This state is invoqued when you need indicate that node is doing something and is not ready for serve, for example:
+* **DOING_SOMETHING**: This state is invoked when you need indicate that node is doing something, and its not ready for serve, for example:
   * A use case would be when the node is waiting for another node or external service.
-  * Other, can be when the node event loop is overloaded, or prone to overload.
+  * When the node event loop is overloaded, or prone to overload.
 * **DOWN**: This state is always the last state.
   * Indicates that node is totally stopped and inoperative. 
 
