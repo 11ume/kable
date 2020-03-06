@@ -4,6 +4,22 @@
 
 <br>
 
+### Table of Contents
+
+**[Usage](#Usage)** 
+
+**[Installation](#installation)** 
+
+**[First impressions and goals](#first-impressions-and-goals)**
+
+**[What are sentinel nodes](#node-sentinels)**
+
+**[What are the node states](#node-state)** 
+
+**[What happens when duplicate nodes are found](#duplicate-node-ids)** 
+
+<br>
+
 ### First impressions and goals
 
 <br>
@@ -32,7 +48,7 @@ These nodes send messages to the other nodes to inform about their state of heal
 
 <br>
 
-### What does one of these messages look like?
+#### What does one of these messages look like?
 
 <br>
 
@@ -69,7 +85,6 @@ These nodes send messages to the other nodes to inform about their state of heal
 }
 ```
 
-<br>
 <br>
 
 ### Installation
