@@ -209,7 +209,7 @@ This operation may be aborted when you deem is necessary, using a especial utili
 
 <br>
 
-*Unfortunately the promises do not have a native logic of cancellation, to canceled it, is necessary to use external tools*
+*Unfortunately the promises do not have a native logic of cancellation, to canceled it, is necessary to use external tools.*
 
 <br>
 
@@ -238,7 +238,7 @@ import oa from 'op-abort'
 
 <br>
 
-*We have requested a node that does not exist, so the **pick** method will wait 5 seconds until the  **non-existent-node** until it is announced, and this will never happens. In somes contexts like the shown in the previous example, the pick method could block the process for 5 seconds and whitout op-abort, you would have no way to cancel the operation*
+*We have requested a node that does not exist, so the **pick** method will wait 5 seconds until the  **non-existent-node** until it is announced, and this will never happens. In somes contexts like the shown in the previous example, the pick method could block the process for 5 seconds and whitout op-abort, you would have no way to cancel the operation.*
 
 <br>
 
@@ -289,7 +289,7 @@ foo.up() // start kable in running state
 ```
 <br>
 
-As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transaction not allowed will invoke an expression**.
+As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transitions not allowed will invoke an expression**.
 
 <br>
 
@@ -431,13 +431,13 @@ The service discovery system is really fast and automatic.
   * **update**
     * Is emitted when the node change of state. 
   * **unregistre**
-    * Is emitted when a node informs that it will unsubscribe.
+    * Is emitted when the node informs that it will unsubscribe.
   * **advertisement**
-    * Is emitted periodically to inform in what state it is, similar to a health check.
+    * Is emitted periodically to inform in what state the node is, similar to a health check.
 
 <br>
 
-**Note:** Kable also supports unicast and multicast, but it is recommended that you use broadcast.
+**Note:** Kable also supports **unicast** and **multicast**, but is recommended use always **broadcast**.
 
 <br>
 
