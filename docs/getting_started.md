@@ -13,7 +13,7 @@
 - **[Installation](#installation)** 
 
 - **[First impressions and goals](#first-impressions-and-goals)**
-- 
+
 - **[Getting a node](#getting-a-node)**
 
 - **[What are sentinel nodes](#node-sentinels)**
@@ -150,8 +150,8 @@ server.listen(foo.port)
 
 <br>
 
-*The pick method is used to get the information of some node in particular.* 
-> This method must be invoked for example: every time a request is made to another node. To know where he is located (ip:port) and know about his status.
+*The **pick** method is used to get the information of some node in particular.* 
+> This method must be invoked for example: every time a request is made for getting another node. To know where he is located (ip:port) and know about his status.
 
 <br>
 
@@ -239,7 +239,7 @@ import oa from 'op-abort'
 
 <br>
 
-*We have requested a node that does not exist, so the **pick** method will wait 5 seconds until the  non-existent-node until it is announced, and this will never happens. In somes contexts like the shown in the previous example, the pick method could block the process for 5 seconds and whitout op-abort, you would have no way to cancel the operation*
+*We have requested a node that does not exist, so the **pick** method will wait 5 seconds until the  **non-existent-node** until it is announced, and this will never happens. In somes contexts like the shown in the previous example, the pick method could block the process for 5 seconds and whitout op-abort, you would have no way to cancel the operation*
 
 <br>
 
