@@ -24,9 +24,8 @@
 
 - **[The service discovery](#the-service-discovery)**
   * **[Lifecycle](#lifecycle)**
+  * **[Fault tolerance](#fault-tolerance)**
   * **[How discovery service works](#how-discovery-service-works)**
-  * **[What happens if some node don't call the **down** method](#what-happens-if-some-node-don't-call-the-**down**-method)**
-  * **[what happens if a node stops working abruptly or by singal kill](#what-happens-if-a-node-stops-working-abruptly-or-by-singal-kil)**
 
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
@@ -363,6 +362,8 @@ Now we have a node called foo and its replica working, soo easy right?.
 kable uses **UDP Broadcast method**, to locate each node inside of same subnet.
 Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
 
+For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
+
 <br>
 
 > Important note: In most production environments like **Digitalocean** or **AWS EC2** etc, it is not possible to perform UDP brodcasting, therefore is necessary to use an **[overlay network](https://en.wikipedia.org/wiki/Overlay_network)**
@@ -378,19 +379,20 @@ The discovery service starts working when the **up** method is invoked, and ends
 
 <br>
 
-### What happens if some node don't call the **down** method?
+### Fault tolerance
 
-> Well, kable always tries to issue his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happens, and will issue the termination status **down**, with the signal and the exit code.
+#### What happens if some node don't call the **down** method?
+
+> Well, kable always tries to emit his termination status, therefore if the process ends abruptly, it will intercept the termination signal before of this happens, and will issue the termination status **down**, with the signal and the exit code.
 
 <br>
 
-### what happens if a node stops working abruptly or by singal kill
+#### what happens if a node stops working abruptly whit out singal kill
 
 > This would be the worst that could happen since the node would remain in its last state until it was removed from the records, there is no way to predict that a node will stop working whit anticipation, can be innumerable factors those who could generate this. But each node has a **node timeout controller**, that will remove the inactive node from his registry, once the estimated waiting time is over by default **3 seconds**.
 > In short, your entire system will take 3 seconds to react to this event, but if everything is properly designed and running it never shouldn't happen.
 
 <br>
-
 <br>
 
 #### Security
