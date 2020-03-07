@@ -35,6 +35,7 @@
 - **[The load balancer](#the-load-balancer)** 
   * **[How the load balancer works](#how-the-load-balancer-works?)**
   * **[Nodes ignored by the your node state](#nodes-ignored-by-the-your-node-state)**
+  * **[Loader balancer suggestions](#loader-balancer-suggestions)**
 
 <br>
 
@@ -656,9 +657,11 @@ baz.pick('foo') // foo2
 baz.pick('foo') // foo
 ```
 
+<br>
 
-# Loader balancer suggestions
+#### Loader balancer suggestions
 
+<br>
 
 Now that you understand how it works you can get more out of it, although it is smart you can help it to be more efficient.
 
