@@ -177,36 +177,36 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 ```bash
                                                                           +------------------+                 
-                                                                          │    Get an node   │                 
+                                                                          |    Get an node   |                 
                                                                           +------------------+                 
                                                                                     ↓                         
                                                                +----------------------------------------+                 
-                                                               │              Is in cache?              │  < ─────────────────┐
-                                                               +----------------------------------------+                     │
-                                                                   ↓                                ↓                         │
-                                                                +-----+                          +-----+                      │
-                                                                │ Yes │                          │ No  │                      │
-                                                                +-----+                          +-----+                      │          
-                                                                   ↓                                ↓                         │
-                                +--------------------------------------+                     +-------------------------+      │
-                                │       This node have replicas?       │                     │       Wait for he       │      │
-                                +--------------------------------------+                     +-------------------------+      │
-                                      │                         │                                         ↓                   │ 
-                                      │                         │                            +-------------------------+      │
-                                      │                         │                            │   Time of wait is end   │      │
-                                      │                         │                            +-------------------------+      │
-                                      ↓                         ↓                                 ↓               ↓           │ 
-                                   +-----+                   +-----+                           +-----+         +-----+        │     
-                                   │ Yes │                   │ No  │                           │ Yes │         │ No  │  ──────┘
+                                                               |              Is in cache?              |  < ─────────────────┐
+                                                               +----------------------------------------+                     |
+                                                                   ↓                                ↓                         |
+                                                                +-----+                          +-----+                      |
+                                                                | Yes |                          | No  |                      |
+                                                                +-----+                          +-----+                      |          
+                                                                   ↓                                ↓                         |
+                                +--------------------------------------+                     +-------------------------+      |
+                                |       This node have replicas?       |                     |       Wait for he       |      |
+                                +--------------------------------------+                     +-------------------------+      |
+                                      |                         |                                         ↓                   | 
+                                      |                         |                            +-------------------------+      |
+                                      |                         |                            |   Time of wait is end   |      |
+                                      |                         |                            +-------------------------+      |
+                                      ↓                         ↓                                 ↓               ↓           | 
+                                   +-----+                   +-----+                           +-----+         +-----+        |     
+                                   | Yes |                   | No  |                           | Yes |         | No  |  ──────┘
                                    +-----+                   +-----+                           +-----+         +-----+                  
-                                      │                         │                                 ↓     
-                                      │                         │                        +-------------------+
-                                      │                         │                        │  Throw exception  │
-                                      │                         │                        +-------------------+
-                                      │                         │                                     
+                                      |                         |                                 ↓     
+                                      |                         |                        +-------------------+
+                                      |                         |                        |  Throw exception  |
+                                      |                         |                        +-------------------+
+                                      |                         |                                     
                                       ↓                         ↓
     +---------------------------------------------+     +----------------------------------------+
-    │   Get first replica available immediately   │     │  Get the unique available immediately  │  
+    |   Get first replica available immediately   |     |  Get the unique available immediately  |  
     +---------------------------------------------+     +----------------------------------------+                               
 
 ```
@@ -346,13 +346,15 @@ As i said kable have a state machine, so the passage from one state to another i
 
 <br>
 
-│ States          │ Possible transitions                       │
-│ --------------- │ ------------------------------------------ │
-│ UP              │ RUNNING - DOING_SOMETHING - STOPPED - DOWN │
-│ DOWN            │ UP                                         │
-│ RUNNING         │ DOING_SOMETHING - STOPPED - DOWN           │
-│ STOPPED         │ DOING_SOMETHING - RUNNING - DOWN           │
-│ DOING_SOMETHING │ DOING_SOMETHING - RUNNING - STOPPED - DOWN │
+
+| States          | Possible transitions                       |
+| --------------- | ------------------------------------------ |
+| UP              | RUNNING - DOING_SOMETHING - STOPPED - DOWN |
+| DOWN            | UP                                         |
+| RUNNING         | DOING_SOMETHING - STOPPED - DOWN           |
+| STOPPED         | DOING_SOMETHING - RUNNING - DOWN           |
+| DOING_SOMETHING | DOING_SOMETHING - RUNNING - STOPPED - DOWN |
+
 
 <br>
 
@@ -654,13 +656,13 @@ The nodes found in the next states are totally ignored by the load balacer alogo
 
 <br>
 
-│ States          │ Ignored │
-│ --------------- │ ------- │
-│ UP              │ yes     │
-│ DOWN            │ yes     │
-│ STOPPED         │ yes     │
-│ RUNNING         │ no      │
-│ DOING_SOMETHING │ yes     │
+| States          | Ignored |
+| --------------- | ------- |
+| UP              | yes     |
+| DOWN            | yes     |
+| STOPPED         | yes     |
+| RUNNING         | no      |
+| DOING_SOMETHING | yes     |
 
 <br>
 
