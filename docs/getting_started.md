@@ -738,6 +738,7 @@ const handler = async (_req, res) => {
   // processing this request requires some work!
   let i = 0
   while (i < 1e5) i++
+  res.end()
 }
 
 const bar = kable('foo')
