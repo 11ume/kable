@@ -32,6 +32,8 @@
 
 - **[Security](#security)** 
 
+- **[The load balancer](#the-load-balancer)** 
+  * **[How the load balancer works](#how-the-load-balancer-works?)**
 
 <br>
 
