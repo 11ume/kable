@@ -176,13 +176,13 @@ foo.pick('bar'): Promise<NodeRegistre>
 <br>
 
 ```bash
-                                                                          +------------------+                 
-                                                                          |    Get an node   |                 
-                                                                          +------------------+                 
-                                                                                    ↓                         
-                                                               +----------------------------------------+                 
-                                                               |              Is in cache?              |  < ─────────────────┐
-                                                               +----------------------------------------+                     |
+                                                                           +------------------+                 
+                                                                           |    Get an node   |                 
+                                                                           +------------------+                 
+                                                                                     ↓                         
+                                                               +------------------------------------------+                 
+                                                               |              Is in cache?                |  < ───────────────┐
+                                                               +------------------------------------------+                   |
                                                                    ↓                                ↓                         |
                                                                 +-----+                          +-----+                      |
                                                                 | Yes |                          | No  |                      |
@@ -193,7 +193,7 @@ foo.pick('bar'): Promise<NodeRegistre>
                                 +--------------------------------------+                     +-------------------------+      |
                                       |                         |                                         ↓                   | 
                                       |                         |                            +-------------------------+      |
-                                      |                         |                            |   Time of wait is end   |      |
+                                      |                         |                            |  Time of wait is end?   |      |
                                       |                         |                            +-------------------------+      |
                                       ↓                         ↓                                 ↓               ↓           | 
                                    +-----+                   +-----+                           +-----+         +-----+        |     
@@ -213,13 +213,13 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-- The **bar** service has not yet started or is in a state of unavailable.
+- The **bar** node has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
   
-- Exist multiple replicas of the **bar** service.
+- Exist multiple replicas of the **bar** node.
    * Will take the first available node replica, in the next invocation of the method **pick**, will take the following replica applying Round Robin algorithm. Each node internally contains an ordered queue of available nodes.
   
-- The **bar** service is already available and is stored in the nodes registre of the service **foo**.
+- The **bar** node is already available and is stored in the nodes registre of the node **foo**.
   * Will take the node immediately.
 
 <br>
@@ -228,7 +228,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-The second service is called **bar**, and this is similar to the first, surely you are thinking that it is a cyclic reference, but we will simply ignore this for this example and u can observe how theses two services are able to found each other immediately.
+The second node is called **bar**, and this is similar to the first, surely you are thinking that it is a cyclic reference, but we will simply ignore this for this example and u can observe how theses two nodes are able to found each other immediately.
 
 <br>
 
@@ -239,7 +239,7 @@ import { createServer } from 'http'
 const bar = kable('bar', { port: 3001 })
 const server = createServer(async (_req, res) => {
     const pick = await bar.pick('foo')
-    res.end(`service ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+    res.end(`Node ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
 })
 
 server.on('listening', bar.up)
