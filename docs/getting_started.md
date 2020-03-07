@@ -517,7 +517,7 @@ foo.up()
 
 <br>
 
-**kable** have an implicit load balancer
+**kable** have an smart and implicit load balancer. 
 
 <br>
 
@@ -654,6 +654,63 @@ baz.pick('foo') // foo3
 // 2 seconds after 
 baz.pick('foo') // foo2
 baz.pick('foo') // foo
+```
+
+
+# Loader balancer suggestions
+
+
+Now that you understand how it works you can get more out of it, although it is smart you can help it to be more efficient.
+
+**How?**
+
+<br>
+
+One of the ways is to notify the load shooter that a node is about to overload or that it will be busy for a long time.
+
+<br>
+
+**How are you going to achieve this, very easy see:**
+
+<br>
+
+Using tools like [node-toobusy](https://github.com/lloyd/node-toobusy), we can know the state of the event loop and anticipate that a request arrives at this node.
+
+<br>
+
+```typescript
+import kable from 'kable'
+import toobusy from 'toobusy'
+import { createServer } from 'http'
+
+const middleware = (bar, _req, res) => (next) => {
+  const id = Symbol()
+  const state = bar.state
+
+  if (toobusy()) {
+      res.statusCode = 503
+      bar.doing('Is too busy', id)
+      return
+    }
+
+    if (state.id === id) {
+      bar.start()
+    }
+
+    next()
+}
+
+const handler = async (_req, res) => {
+  // processing this request requires some work!
+  let i = 0
+  while (i < 1e5) i++
+}
+
+const bar = kable('foo')
+const server = createServer(middleware(bar, handler))
+server.on('listening', bar.up)
+server.on('close', bar.down)
+server.listen(bar.port)
 ```
 
 <br>
