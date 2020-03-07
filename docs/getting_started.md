@@ -510,8 +510,88 @@ foo.up()
 <br>
 <br>
 
+### The load balancer
+
+**kable** have an implicit load balancer
+
+### How the load balancer works?
+
+The load balancer has a queue of nodes in its register.
+Every time a node is announced or unsubscribed this add or removes that node from its queue.
+
+As kable is based on a series of distributed nodes that have asynchronous behavior, 
+the load balancer needs to find the best way to organize this node queue in an orderly manner, for this each node has an **index** number that is **unique**.
+
+*The load balancing applying Round Bobin algorithm and first to be available to work.* 
+
+> The load balancer have an *no sequencial* organized node queue for example: 
+*We have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
+
+<br>
+
+> Foo node
+```text
+foo  
+  ├── baz
+  └── bar
+```
+
+> Bar node
+```text
+bar  
+  ├── baz
+  ├── foo
+  ├── foo:3
+  ├── foo:1
+  └── foo:2
+```
+
+> Baz node
+```text
+baz  
+  ├── bar
+  ├── foo
+  ├── foo:3
+  ├── foo:1
+  └── foo:2
+```
+
+<br>
+
+Now let's go back to the example where explain what happens when a node is requested:
+
+<br>
+
+[Getting a node](#Getting-a-node)
+
+<br>
+
+> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, is possible to predict the following behavior:
+
+<br>
+
+``` typescript
+bar.pick('foo') // foo
+bar.pick('foo') // foo:3
+bar.pick('foo') // foo:1
+bar.pick('foo') // foo:2
+```
+
+<br>
+
+``` typescript
+baz.pick('foo') // foo
+baz.pick('foo') // foo:3
+baz.pick('foo') // foo:1
+baz.pick('foo') // foo:2
+```
+
+*Thanks to this organization the load is always divided evenly and we do not overload any node*.
+
+<br>
+<br>
+
 #### The messages
-#### The load balancer
 #### Interact whit deep logic of kable
 
 
