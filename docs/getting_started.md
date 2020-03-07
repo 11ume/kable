@@ -30,6 +30,13 @@
 
 - **[What happens when duplicate nodes are found](#duplicate-node-ids)** 
 
+- **[Security](#security)** 
+
+- **[The load balancer](#the-load-balancer)** 
+  * **[How the load balancer works](#how-the-load-balancer-works?)**
+  * **[Nodes ignored by the your node state](#nodes-ignored-by-the-your-node-state)**
+  * **[Loader balancer suggestions](#loader-balancer-suggestions)**
+
 <br>
 
 ### First impressions and goals
@@ -435,15 +442,11 @@ Now we have a node called foo and its replica working, soo easy right?.
 
 <br>
 
-### How the discovery service works?
+#### How the discovery service works?
 
 <br>
 
 The service discovery system is really fast and automatic.
-
-<br>
-
-### How that works?
 
 <br>
 
@@ -500,9 +503,253 @@ The discovery service starts to working when the **up** method is invoked, and e
 
 <br>
 
+### Security
+
+<br>
+
+**kable** handles the security of the messages it emits and receives through encryption.
+As explained above, **Kable** emits UDP messages via the broadcast method, by default these messages travel in plain text. 
+
+And anyone who is on the same network, will be able to read and modify these messages using [MitM](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attack.
+
+To mitigate this, **Kable** implements the encryption of each message that is emitted applying **[AES CBC 256](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)** algorithm.
+
+*This will not prevent you from being a victim of a **MitM** attack, but **the attacker will not be able to read the messages or modify them***.
+
+<br>
+
+> For example you can use **openssl** bash command to generates 32 random bytes (256 bits) key.
+
+```bash
+openssl rand -base64 32
+```
+
+<br>
+
+> This node now will encrypt all his messages, and rejects all messages coming from other nodes that do not have the same key.
+
+<br>
+
+```typescript
+const foo = kable('foo', { key: 'x4wl1vHLBcENpF+vbvnyWqYbNyZ1xUjNDZYAbLROTLE='})
+foo.up()
+```
+
+<br>
+
+> The best way to create keys and manage them is using tools like **[Vault](https://www.vaultproject.io/)**.
+*You can devise your own way of sharing the keys but make sure it be safe*.
+
+<br>
+<br>
+
+### The load balancer
+
+<br>
+
+**kable** have an smart and implicit load balancer. 
+
+<br>
+
+### How the load balancer works?
+
+<br>
+
+The load balancer has a queue of nodes in its register.
+Every time a node is announced or unsubscribed this add or removes that node from its queue.
+
+As kable is based on a series of distributed nodes that will start and stop in asynchronously, 
+the load balancer system, needs to find the best way to organize this node queue in each node of same way. For this each node has an especial property called **index**, that is an **unique** number.
+
+<br>
+
+**Node:** The load balancer applying Round Bobin algorithm and first to be available to work. 
+
+<br>
+
+So each node, have the same **no sequencial** but organized node queue inside. 
+
+<br>
+
+*In the next example we have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
+
+<br>
+
+> Foo node
+```bash
+foo  
+  ├── baz
+  └── bar
+```
+
+> Bar node
+```bash
+bar  
+  ├── baz
+  ├── foo
+  ├── foo:3
+  ├── foo:1
+  └── foo:2
+```
+
+> Baz node
+```bash
+baz  
+  ├── bar
+  ├── foo
+  ├── foo:3
+  ├── foo:1
+  └── foo:2
+```
+
+<br>
+
+Now let's go back to the example where explain what happens when a node is requested [Getting a node](#Getting-a-node)
+
+<br>
+
+> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, is possible to predict the following behavior, of these requests:
+
+<br>
+
+``` typescript
+bar.pick('foo') // foo
+bar.pick('foo') // foo:3
+bar.pick('foo') // foo:1
+bar.pick('foo') // foo:2
+```
+<br>
+
+``` typescript
+baz.pick('foo') // foo
+baz.pick('foo') // foo:3
+baz.pick('foo') // foo:1
+baz.pick('foo') // foo:2
+```
+
+*Thanks to this organization the load is always divided evenly and we do not overload any node*.
+
+<br>
+
+Now remember that I said that Kable has an internal state machine, well the load balancer is based on the state of each node to decide whether to take a node or request the next one in the row.
+
+The nodes found in the next states are totally ignored by the load balacer alogorithm, and are not in the work queue:
+
+<br>
+
+### Nodes ignored by the your node state
+
+<br>
+
+| States          | Ignored |
+| --------------- | ------- |
+| UP              | yes     |
+| DOWN            | yes     |
+| STOPPED         | yes     |
+| RUNNING         | no      |
+| DOING_SOMETHING | yes     |
+
+<br>
+
+Let's look at an example of this
+
+<br>
+
+> Foo node states
+
+<br>
+
+```bash
+foo:running  
+  ├── foo3:running
+  ├── foo1:stopped
+  └── foo2:up
+```
+<br>
+
+*suppose the **foo2** node can be in running state after **2 seconds***
+
+<br>
+
+The result would be the following:
+
+<br>
+
+``` typescript
+baz.pick('foo') // foo
+baz.pick('foo') // foo3
+baz.pick('foo') // foo
+baz.pick('foo') // foo3
+
+// 2 seconds after 
+baz.pick('foo') // foo2
+baz.pick('foo') // foo
+```
+
+<br>
+
+### Loader balancer suggestions
+
+<br>
+
+Now that you know how it works you can help load balancer to make it more efficient.
+
+<br>
+
+#### **How?**
+
+<br>
+
+One of the ways is to notify the load balacer that a node is overloaded or that it will be busy for a long time.
+
+<br>
+
+**How are you going to achieve this, very easy see:**
+
+<br>
+
+Using tools like [node-toobusy](https://github.com/lloyd/node-toobusy), we can know the state of the event loop and anticipate that a request arrives at this node.
+
+<br>
+
+```typescript
+import kable from 'kable'
+import toobusy from 'toobusy'
+import { createServer } from 'http'
+
+const middleware = (bar, _req, res) => (next) => {
+  const id = Symbol()
+  const state = bar.state
+
+  if (toobusy()) {
+      res.statusCode = 503
+      bar.doing('Is too busy', id)
+      return
+    }
+
+    if (state.id === id) {
+      bar.start()
+    }
+
+    next()
+}
+
+const handler = async (_req, res) => {
+  // processing this request requires some work!
+  let i = 0
+  while (i < 1e5) i++
+}
+
+const bar = kable('foo')
+const server = createServer(middleware(bar, handler))
+server.on('listening', bar.up)
+server.on('close', bar.down)
+server.listen(bar.port)
+```
+
+<br>
+
 #### The messages
-#### Security
-#### The load balancer
 #### Interact whit deep logic of kable
 
 
