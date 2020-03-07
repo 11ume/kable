@@ -171,6 +171,35 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
+```bash
+                                               +--------------+                 
+                                               | Get foo node |                 
+                                               +--------------+                 
+                                                      |                         
+                                         +---------------------------+                 
+                                         |       Is in cache?        | <----------------- +
+                                         +---------------------------+                    |
+                                         |                           |                    |
+                                   +-----+                           +-----+              |
+                                   | Yes |                           | No  |              |
+                                   +-----+                           +-----+              |
+                                         |                           |                    |
+                        +----------------+                           +--------------------+
+                        | Have replicas? |                           |    Wait for he     |
+                        +----------------+                           +--------------------+
+                        |                |
+                  +-----+                +-----+              
+                  | Yes |                | No  |              
+                  +-----+                +-----+  
+                  |                            |
+   +-------------------------------+           +---------------------------------+
+   | Get first replica immediately |           | Get the unique node immediately |  
+   +-------------------------------+           +---------------------------------+                               
+
+```
+
+<br>
+
 - The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
   
@@ -664,6 +693,62 @@ baz.pick('foo') // foo
 <br>
 
 Now that you know how it works you can help load balancer to make it more efficient.
+
+<br>
+
+#### **How?**
+
+<br>
+
+One of the ways is to notify the load balacer that a node is overloaded or that it will be busy for a long time.
+
+<br>
+
+**How are you going to achieve this, very easy see:**
+
+<br>
+
+Using tools like [node-toobusy](https://github.com/lloyd/node-toobusy), we can know the state of the event loop and anticipate that a request arrives at this node.
+
+<br>
+
+```typescript
+import kable from 'kable'
+import toobusy from 'toobusy'
+import { createServer } from 'http'
+
+const middleware = (bar, next) => (_req, res) => {
+  const id = Symbol()
+  const state = bar.state
+
+  if (toobusy()) {
+      res.statusCode = 503
+      bar.doing('Is too busy', id)
+      return
+    }
+
+    if (state.id === id) {
+      bar.start()
+    }
+
+    next()
+}
+
+const handler = async (_req, res) => {
+  // processing this request requires some work!
+  let i = 0
+  while (i < 1e5) i++
+  res.end()
+}
+
+const bar = kable('foo')
+const server = createServer(middleware(bar, handler))
+server.on('listening', bar.up)
+server.on('close', bar.down)
+server.listen(bar.port)
+```
+
+<br>
 
 #### The messages
 #### Interact whit deep logic of kable
