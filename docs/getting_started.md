@@ -659,17 +659,19 @@ baz.pick('foo') // foo
 
 <br>
 
-#### Loader balancer suggestions
+### Loader balancer suggestions
 
 <br>
 
-Now that you understand how it works you can get more out of it, although it is smart you can help it to be more efficient.
-
-**How?**
+Now that you know how it works you can help load balancer to make it more efficient.
 
 <br>
 
-One of the ways is to notify the load shooter that a node is about to overload or that it will be busy for a long time.
+#### **How?**
+
+<br>
+
+One of the ways is to notify the load balacer that a node is overloaded or that it will be busy for a long time.
 
 <br>
 
