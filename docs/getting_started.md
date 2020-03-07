@@ -34,7 +34,7 @@
 
 - **[The load balancer](#the-load-balancer)** 
   * **[How the load balancer works](#how-the-load-balancer-works?)**
-  * **[Ingoraed node states](#ingoraed-node-states)**
+  * **[Nodes ignored by the your node state](#nodes-ignored-by-the-your-node-state)**
 
 <br>
 
@@ -607,7 +607,7 @@ The nodes found in the next states are totally ignored by the load balacer alogo
 
 <br>
 
-### Load balancer ingoraed node states
+### Nodes ignored by the your node state
 
 <br>
 
@@ -621,7 +621,7 @@ The nodes found in the next states are totally ignored by the load balacer alogo
 
 <br>
 
-> Let's look at an example of this
+Let's look at an example of this
 
 <br>
 
