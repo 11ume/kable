@@ -34,6 +34,7 @@
 
 - **[The load balancer](#the-load-balancer)** 
   * **[How the load balancer works](#how-the-load-balancer-works?)**
+  * **[Ingoraed node states](#ingoraed-node-states)**
 
 <br>
 
@@ -514,32 +515,45 @@ foo.up()
 
 ### The load balancer
 
+<br>
+
 **kable** have an implicit load balancer
 
+<br>
+
 ### How the load balancer works?
+
+<br>
 
 The load balancer has a queue of nodes in its register.
 Every time a node is announced or unsubscribed this add or removes that node from its queue.
 
-As kable is based on a series of distributed nodes that have asynchronous behavior, 
-the load balancer needs to find the best way to organize this node queue in an orderly manner, for this each node has an **index** number that is **unique**.
+As kable is based on a series of distributed nodes that will start and stop in asynchronously, 
+the load balancer system, needs to find the best way to organize this node queue in each node of same way. For this each node has an especial property called **index**, that is an **unique** number.
 
-*The load balancing applying Round Bobin algorithm and first to be available to work.* 
+<br>
 
-> The load balancer have an *no sequencial* organized node queue for example: 
-*We have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
+**Node:** The load balancer applying Round Bobin algorithm and first to be available to work. 
+
+<br>
+
+So each node, have the same **no sequencial** but organized node queue inside. 
+
+<br>
+
+*In the next example we have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
 
 <br>
 
 > Foo node
-```text
+```bash
 foo  
   ├── baz
   └── bar
 ```
 
 > Bar node
-```text
+```bash
 bar  
   ├── baz
   ├── foo
@@ -549,7 +563,7 @@ bar
 ```
 
 > Baz node
-```text
+```bash
 baz  
   ├── bar
   ├── foo
@@ -560,15 +574,11 @@ baz
 
 <br>
 
-Now let's go back to the example where explain what happens when a node is requested:
+Now let's go back to the example where explain what happens when a node is requested [Getting a node](#Getting-a-node)
 
 <br>
 
-[Getting a node](#Getting-a-node)
-
-<br>
-
-> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, is possible to predict the following behavior:
+> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, is possible to predict the following behavior, of these requests:
 
 <br>
 
@@ -578,7 +588,6 @@ bar.pick('foo') // foo:3
 bar.pick('foo') // foo:1
 bar.pick('foo') // foo:2
 ```
-
 <br>
 
 ``` typescript
@@ -591,6 +600,62 @@ baz.pick('foo') // foo:2
 *Thanks to this organization the load is always divided evenly and we do not overload any node*.
 
 <br>
+
+Now remember that I said that Kable has an internal state machine, well the load balancer is based on the state of each node to decide whether to take a node or request the next one in the row.
+
+The nodes found in the next states are totally ignored by the load balacer alogorithm, and are not in the work queue:
+
+<br>
+
+### Load balancer ingoraed node states
+
+<br>
+
+| States          | Ignored |
+| --------------- | ------- |
+| UP              | yes     |
+| DOWN            | yes     |
+| STOPPED         | yes     |
+| RUNNING         | no      |
+| DOING_SOMETHING | yes     |
+
+<br>
+
+> Let's look at an example of this
+
+<br>
+
+> Foo node states
+
+<br>
+
+```bash
+foo:running  
+  ├── foo3:running
+  ├── foo1:stopped
+  └── foo2:up
+```
+<br>
+
+*suppose the **foo2** node can be in running state after **2 seconds***
+
+<br>
+
+The result would be the following:
+
+<br>
+
+``` typescript
+baz.pick('foo') // foo
+baz.pick('foo') // foo3
+baz.pick('foo') // foo
+baz.pick('foo') // foo3
+
+// 2 seconds after 
+baz.pick('foo') // foo2
+baz.pick('foo') // foo
+```
+
 <br>
 
 #### The messages
