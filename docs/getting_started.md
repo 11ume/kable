@@ -164,6 +164,35 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
+```bash
+                                               +--------------+                 
+                                               | Get foo node |                 
+                                               +--------------+                 
+                                                      |                         
+                                         +---------------------------+                 
+                                         |       Is in cache?        | <----------------- +
+                                         +---------------------------+                    |
+                                         |                           |                    |
+                                   +-----+                           +-----+              |
+                                   | Yes |                           | No  |              |
+                                   +-----+                           +-----+              |
+                                         |                           |                    |
+                        +----------------+                           +--------------------+
+                        | Have replicas? |                           |    Wait for he     |
+                        +----------------+                           +--------------------+
+                        |                |
+                  +-----+                +-----+              
+                  | Yes |                | No  |              
+                  +-----+                +-----+  
+                  |                            |
+   +-------------------------------+           +---------------------------------+
+   | Get first replica immediately |           | Get the unique node immediately |  
+   +-------------------------------+           +---------------------------------+                               
+
+```
+
+<br>
+
 - The **bar** service has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
   
