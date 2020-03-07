@@ -717,7 +717,7 @@ import kable from 'kable'
 import toobusy from 'toobusy'
 import { createServer } from 'http'
 
-const middleware = (bar, _req, res) => (next) => {
+const middleware = (bar, next) => (_req, res) => {
   const id = Symbol()
   const state = bar.state
 
