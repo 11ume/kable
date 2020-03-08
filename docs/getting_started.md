@@ -329,7 +329,7 @@ foo.up() // start kable in running state
 ```
 <br>
 
-As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transitions not allowed will invoke an expression**.
+As i said kable have a state machine, so the passage from one state to another is extremely strict, **a transitions not allowed will invoke an exception**.
 
 <br>
 
@@ -614,7 +614,7 @@ Now let's go back to the example where explain what happens when a node is reque
 
 <br>
 
-> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, is possible to predict the following behavior, of these requests:
+> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, so thanks to it, is possible to predict the following behavior, of these requests:
 
 <br>
 
