@@ -84,11 +84,15 @@ npm install https://github.com/11ume/kable
 
 <br>
 
-In the following context, we have two HTTP services what should communicate between them. The services are running in the port **3000** and **3001**.
+#### Creating the demo environment
 
 <br>
 
-The first service is called **foo**, this will be your identifier inside of your nodes cluster, and looks like this
+In the following context, we have two HTTP services (nodes) what should communicate between them. The services (nodes) are running in the port **3000** and **3001**.
+
+<br>
+
+The first node is called **foo**, this will be your identifier inside of your nodes cluster, and looks like this
 
 <br>
 
@@ -109,18 +113,47 @@ server.listen(foo.port)
 
 <br>
 
+The second node is called **bar**
+
+<br>
+
+```typescript
+import kable from 'kable'
+import { createServer } from 'http'
+
+const bar = kable('bar', { port: 3001 })
+const server = createServer(async (_req, res) => {
+    const pick = await bar.pick('foo')
+    res.end(`Node ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
+})
+
+server.on('listening', bar.up)
+server.on('close', bar.down)
+server.listen(bar.port)
+```
+
+<br>
+
+We will analyze what is happening by parts.
+
+<br>
+
 #### Getting a node
 
 <br>
 
-*The **pick** method is used to get the information of some node in particular.* 
-> This method must be invoked for example: every time a request is made for getting another node. To know where he is located (ip:port) and know about his status.
+The first thing to do is get a node using the **pick** method. 
 
 <br>
 
 ``` typescript
 foo.pick('bar'): Promise<NodeRegistre> 
 ```
+
+<br>
+
+*This method is used to get the information of some node in particular.* 
+> This method must be invoked for example: every time a request is made for getting another node. To know where he is located (host:port) and know about his status and others things.
 
 <br>
 
@@ -170,6 +203,12 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
+#### The flow chart explanation.
+
+*Possibles scenarios*
+
+<br>
+
 - The **bar** node has not yet started or is in a state of unavailable.
   * The node pick method, will put the request in a wait queue until the node **bar** has been announced, then will take the node immediately.
   
@@ -185,32 +224,18 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-The second node is called **bar**, and this is similar to the first, surely you are thinking that it is a cyclic reference, but we will simply ignore this for this example and u can observe how theses two nodes are able to found each other immediately.
+To understand that other magic 🧙 things are happening see: 
 
 <br>
 
-```typescript
-import kable from 'kable'
-import { createServer } from 'http'
+**[The service discovery](#the-service-discovery)**
 
-const bar = kable('bar', { port: 3001 })
-const server = createServer(async (_req, res) => {
-    const pick = await bar.pick('foo')
-    res.end(`Node ${pick.id} ${pick.host} ${pick.port} ${pick.state}`)
-})
-
-server.on('listening', bar.up)
-server.on('close', bar.down)
-server.listen(bar.port)
-```
+**[The load balancer](#the-load-balancer)** 
 
 <br>
 
-Now surely you are wondering what is happening **under the hood**?
+#### Abort get node operations
 
-The first thing that is done when the **pick** method is called, is look for the requested node in the node registry **(In his memory)**. 
-If he cannot found it in his **cache** of nodes, he will wait for that node for an estimated time, 
-by default **5 minutes**. 
 This operation may be aborted when you deem is necessary, using a especial utility created by me [op-abort](https://github.com/11ume/op-abort).
 
 <br>
@@ -248,20 +273,12 @@ import oa from 'op-abort'
 
 <br>
 
-To understand that other magic 🧙 things are happening see: **[The service discovery](#the-service-discovery)**
-
-<br> 
-
-* Normally, if everything goes well, the node always look for the required node in his cache, or in case of replicas existence, it will send the first available replica, This is really **fast** and that's where the speed of kable lies.
-
-<br>
-
 ### Node state
 
 <br>
 
-> Each node contains a states machine, with five possible states
-A node can change of state using the following methods:
+> Each node contains a states machine, with five possible states.
+The nodes can change of state using the following methods:
 
 #### State transitions methods
 
