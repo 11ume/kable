@@ -519,17 +519,14 @@ foo.up()
 *You can devise your own way of sharing the keys but make sure it be safe*.
 
 <br>
-<br>
 
 ### The load balancer
-
-<br>
 
 **kable** have an smart and implicit load balancer. 
 
 <br>
 
-### How the load balancer works?
+#### How the load balancer works?
 
 <br>
 
@@ -542,25 +539,26 @@ the load balancer system, needs to find the best way to organize this node queue
 <br>
 
 **Node:** The load balancer applying Round Bobin algorithm and first to be available to work. 
-
-<br>
-
 So each node, have the same **no sequencial** but organized node queue inside. 
-
-<br>
 
 *In the next example we have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
 
 <br>
 
-> Foo node
+> Nodes work queue
+
+<br>
+
+**Foo**
+
 ```bash
 foo  
   ├── baz
   └── bar
 ```
 
-> Bar node
+**Bar**
+
 ```bash
 bar  
   ├── baz
@@ -570,7 +568,8 @@ bar
   └── foo:2
 ```
 
-> Baz node
+**Baz**
+
 ```bash
 baz  
   ├── bar
