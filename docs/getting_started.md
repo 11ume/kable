@@ -135,6 +135,22 @@ server.listen(bar.port)
 
 <br>
 
+Now when making http request to the foo service, and we receive the information of bar service,
+the same happens if we make a request to bar service, we will receive the foo data.
+
+*Time to try it:*
+
+<br>
+
+```bash
+curl http://localhost:3000 
+
+# output
+# Node foo <ip> 3001 RUNNNING
+```
+
+<br>
+
 We will analyze what is happening by parts.
 
 <br>
