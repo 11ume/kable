@@ -50,8 +50,10 @@ The architecture of kable is based on a decentralized service system where each 
 
 <br>
 
-* The main objective of **Kable** is to facilitate the service discovery process.
-* Kable is designed to not emit exceptions when it is in operation, they can only occur on very important occasions.
+* The main objective of **Kable** is make very easy, the service discovery process.
+* Important, you dont confuse **Kable** with other systems or methods of "service discovery", such as used in Kubernates or those made through Redis, using DNS. You should comparte **Kable** with [Apache Zookeeper](http://zookeeper.apache.org), [etcd](https://github.com/etcd-io/etcd), [Consul](https://www.consul.io), etc.
+* The main differences of **Kable** and the previous systems, is that it is totally focused on projects made with **Node.js** and works in a decentralized way and has a load balancer, it is faster.
+* **Kable** is designed to not emit exceptions, be very stable and consume few resources when it is in operation, since it must be coupled to the logic of your project, the exceptions can only occur on very important occasions.
 * Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, it may seem unattractive in a first impression but, **what benefits have it?**
   * Is highly fault tolerant, by his decentralized nature. 
   * Don't require install nothing outside of **Node.js** ecosystem. 
