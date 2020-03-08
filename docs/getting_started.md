@@ -441,7 +441,7 @@ const foo = kable('foo', { replica: true })
 foo.up()
 ```
 
-Now we have a node called foo and its replica working, soo easy right?.
+Now we have a node called foo and his replica working, soo easy right?.
 
 <br>
 
@@ -457,15 +457,17 @@ The service discovery system is really fast and automatic.
 
 <br>
 
-> kable uses **UDP Broadcast method** whit a [Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address), by default **255.255.255.0**, to locate each node inside of same network.
+kable uses **UDP Broadcast method** whit a [Broadcast address](https://en.wikipedia.org/wiki/Broadcast_address), by default **255.255.255.0**, to locate each node inside of same network.
  
-> Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
+Each nodes send and recibe messages to the other nodes to inform about their state of health, their location, metadata, and other things, these messages are sent in intervals of time by default **3 seconds** or immediately when a status update is performed in some node.
 
-> Each node keeps a record in his memory of all nodes that are found in his same network, this record is updated periodically.
+Each node keeps a record in his memory of all nodes that are found in his same network, this record is updated periodically.
 
-> For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
+For reduce the amout of data emited, that messages are serialized via **[Message Pack](https://msgpack.org/)**, therefore they are very small.
 
-> The messages are emitted every time an event is triggered:
+<br>
+
+*The messages are emitted every time an event is triggered:*
 
   * **update**
     * Is emitted when the node change of state. 
@@ -525,7 +527,7 @@ To mitigate this, **Kable** implements the encryption of each message that is em
 
 <br>
 
-> For example you can use **openssl** bash command to generates 32 random bytes (256 bits) key.
+For example you can use **openssl** bash command to generates 32 random bytes (256 bits) key.
 
 ```bash
 openssl rand -base64 32
@@ -533,7 +535,7 @@ openssl rand -base64 32
 
 <br>
 
-> This node now will encrypt all his messages, and rejects all messages coming from other nodes that do not have the same key.
+This node now will encrypt all his messages, and rejects all messages coming from other nodes that do not have the same key.
 
 <br>
 
@@ -574,14 +576,15 @@ So each node, have the same **no sequencial** but organized node queue inside.
 
 <br>
 
-> Nodes work queue
+#### Nodes work queue examples
 
 <br>
 
 **Foo**
 
 ```bash
-foo  
+foo
+  |  
   ├── baz
   └── bar
 ```
@@ -589,7 +592,8 @@ foo
 **Bar**
 
 ```bash
-bar  
+bar
+  |  
   ├── baz
   ├── foo
   ├── foo:3
@@ -601,6 +605,7 @@ bar
 
 ```bash
 baz  
+  |
   ├── bar
   ├── foo
   ├── foo:3
@@ -614,7 +619,7 @@ Now let's go back to the example where explain what happens when a node is reque
 
 <br>
 
-> If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, so thanks to it, is possible to predict the following behavior, of these requests:
+If we see the organization of the row that i showed previously, and knowing as I said earlier that the load balancer uses the round Robing Algorithm, so thanks to it, is possible to predict the following behavior, of these requests:
 
 <br>
 
@@ -661,12 +666,13 @@ Let's look at an example of this
 
 <br>
 
-> Foo node states
+#### How looks like the state of **foo** node and his replicas 
 
 <br>
 
 ```bash
-foo:running  
+foo running  
+  |
   ├── foo3:running
   ├── foo1:stopped
   └── foo2:up
