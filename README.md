@@ -45,8 +45,8 @@
 Full support for:
 
 <br>
-    <div align="center">
-        <img src="https://github.com/11ume/kable/blob/master/images/js-ts-logos.png" width="200" height="auto"/>
+    <div>
+        <img src="https://github.com/11ume/kable/blob/master/images/js-ts-logos.png" width="120" height="auto"/>
     </div>
 <br>
 
