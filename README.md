@@ -39,6 +39,15 @@
 **why?**
 
 > Creating and maintaining a distributed services architectures is a very complex task, that involves things like load balancing, service discovery, health and status checking, fault tolerance, replication etc. The goal of **Kable** is to make some of these tasks easier to carry out. 
+
+<br>
+
+Full support for:
+
+<br>
+    <div align="center">
+        <img src="https://github.com/11ume/kable/blob/master/images/js-ts-logos.png" width="200" height="auto"/>
+    </div>
 <br>
 
 **This project is in alfa state 🔥**
@@ -118,7 +127,9 @@ and is administered before it is requested.
 <br>
 
 <br>
-<div align="center">
-<img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
-</div>
+    <div align="center">
+        <img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
+    </div>
 <br>
+
+
