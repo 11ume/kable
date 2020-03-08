@@ -46,7 +46,7 @@
 
 <br>
 
-The architecture of kable is based on a decentralized service system where each service have in his memory an record of the location and status of all others services that are in his same cluster.
+The architecture of kable is based on a decentralized service system where each service have in his memory an record of the location and status of all others services that are in his same network.
 
 <br>
 
