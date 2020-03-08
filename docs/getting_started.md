@@ -174,13 +174,13 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-#### So you must invoke this method to:
+#### So, you must invoke this method to:
 
 <br>
 
-* First You must know where he is located.
-* For know if the node is available.
-* For know if the node have replicas.
+* First, you must know where the node is located.
+* For know if he is available.
+* For know if he have replicas.
 
 <br>
 
@@ -245,7 +245,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 <br>
 
-To understand that other magic 🧙 things are happening see: 
+To understand that other magic 🧙 things are happening under the hood see: 
 
 <br>
 
@@ -261,7 +261,7 @@ This operation may be aborted when you deem is necessary, using a especial utili
 
 <br>
 
-*Unfortunately the promises do not have a native logic of cancellation, to canceled it, is necessary to use external tools.*
+*Unfortunately the promises do not have a native logic of cancellation, to canceled it is necessary to use external tools.*
 
 <br>
 
@@ -283,7 +283,9 @@ import oa from 'op-abort'
     await foo.pick('non-existent-node', { opAbort })
 
     setTimeout(opAbort.abort, 1000)
-    console.log('This runs after 5 seconds')
+    const { aborted } = opAbort.state
+
+    console.log('The node request was aborted after 1 second ', aborted)
 }())
 
 ```
