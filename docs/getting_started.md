@@ -136,7 +136,7 @@ server.listen(bar.port)
 <br>
 
 Now when making http request to the foo service, and we receive the information of bar service,
-the same happens if we make a request to bar service, we will receive the foo data.
+the same happens if we make a request to bar service, we will receive the foo information.
 
 *Time to try it:*
 
@@ -170,7 +170,17 @@ foo.pick('bar'): Promise<NodeRegistre>
 <br>
 
 *This method is used to get the information of some node in particular.* 
-> This method must be invoked for example: every time a request is made for getting another node. To know where he is located (host:port) and know about his status and others things.
+> Must be invoked for example; every time a request http/tcp/udp etc, is made for getting another node.
+
+<br>
+
+#### So you must invoke this method to:
+
+<br>
+
+* First You must know where he is located.
+* For know if the node is available.
+* For know if the node have replicas.
 
 <br>
 
