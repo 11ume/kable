@@ -567,7 +567,7 @@ the load balancer system, needs to find the best way to organize this node queue
 
 <br>
 
-**Node:** The load balancer applying Round Bobin algorithm and first to be available to work. 
+**Note:** The load balancer applying Round Bobin algorithm and first to be available to work. 
 So each node, have the same **no sequencial** but organized node queue inside. 
 
 *In the next example we have seven nodes **foo**, **bar** and **baz** and a few foo replicas, let's see how their node tails look:*
@@ -724,6 +724,7 @@ Remember that I said that kable send and receive messages, so now let's see what
     , iid: '621a334f-c748-47bd-9f9b-a926d7619a77'
     , pid: 'e993539d-bb12-45e5-beff-b9f1d8da470b'
     , index: 16160494567343020000
+    , registre: ['bar', 'baz']
     , replica: {
         is: false
     }
@@ -746,20 +747,21 @@ Remember that I said that kable send and receive messages, so now let's see what
 ```
 <br>
 
-* **id**: It is a text string that identifies the node.
+* **id**: It is a unique string that identifies the node in the network.
 * **host**: Contains the ip location dns of the node.
 * **port**: Contains the port of the node.
 * **meta**: Is additional information that briefly describes the node.
 * **hostname**: [hostname](https://en.wikipedia.org/wiki/Hostname)
-* **state**: Show what state the node is in.
+* **state**: Show the current state of the node.
 * **ensured**: Is a boolean that shows if the data is being encrypted.
-* **ignorable**: Is a boolean that shows that this node should be ignored in the network.
+* **ignorable**: Is a boolean which indicates if the node must be ignored for the others in the same network.
 * **adTime**: Indicate in miliseconds, how often this node should be announced.
 * **event**: The event that triggered the issuance of this message.
-* **iid**: It is a unique identifier that identifies an instance of kable.
-* **pid**: It is a unique identifier that identifies an process of kable.
-* **index**: It is a unique number used to order the nodes see: [How the load balancer works](#how-the-load-balancer-works?).
-* **replica**: Its for indicated if this node is a replica of another node. 
+* **iid**: Is a unique identifier that identifies instance of the node.
+* **pid**: Is a unique identifier that identifies an process of the node.
+* **index**: Is a unique number used for the load balancer: [How the load balancer works](#how-the-load-balancer-works?).
+* **registre:**: Shows all nodes registered.   
+* **replica**: Indicates if the node is a replica of another node. 
 * **stateData**: It has status information, such as time and reason, for example the detection of a node.
 * **rinfo**: This information comes from the transport module. It is used internally by kable, but can be used for monitoring and measurement.
 
