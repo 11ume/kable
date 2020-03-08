@@ -42,7 +42,7 @@
 
 <br>
 
-Full support for:
+**Full support for:**
 
 <br>
     <div>

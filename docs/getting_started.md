@@ -8,10 +8,11 @@
 
 <br>
 
-- **[Usage](#Usage)** 
-  * **[Getting a node](#getting-a-node)**
 
 - **[Installation](#installation)** 
+ 
+- **[Usage](#Usage)** 
+  * **[Getting a node](#getting-a-node)**
 
 - **[First impressions and goals](#first-impressions-and-goals)**
 
@@ -362,7 +363,8 @@ for a distributed service system.
 
 <br>
 
-when a node detects a duplicate node id, it emits an **error** event called
+**Important** Kable does not allow duplicate nodes ids.
+When any node detects a duplicate node id, it emits an **error** event called:
 
 > duplicate_node_id
 
