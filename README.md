@@ -46,7 +46,7 @@
 
 <br>
     <div>
-        <img src="https://github.com/11ume/kable/blob/master/images/js-ts-logos.png" width="120" height="auto"/>
+        <img alt="Full support for javascript and typescript projects" src="https://github.com/11ume/kable/blob/master/images/js-ts-logos.png" width="120" height="auto"/>
     </div>
 <br>
 
