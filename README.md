@@ -101,12 +101,15 @@ and is administered before it is requested.
 <br>
 
 > Is a little module to interact with some deep functionalities of kable
+
 <br>
 
 #### A serie of node sentries
+
 <br>
 
 > These are a series of special nodes, responsible for controlling with precision the status of some external service. You can create your own sentinel nodes.
+
 <br>
 
 | Sentry                                                  | target     | status |
@@ -120,10 +123,12 @@ and is administered before it is requested.
 
 <br>
 
-#### A cool node status visualization extension, created for vscode 🏄‍♀️
+### A cool node status visualization extension, created for vscode 🏄‍♀️
+
 <br>
 
-**[kable-vscode](https://github.com/11ume/kable-vscode)**
+#### **[Kable vscode extension](https://github.com/11ume/kable-vscode)**
+
 <br>
 
 <br>
