@@ -93,7 +93,7 @@ In the following context, we have two HTTP services (nodes) what should communic
 
 <br>
 
-The first node is called **foo**, this will be your identifier inside of your nodes cluster, and looks like this
+The first node is called **foo**, this will be your identifier inside of your nodes network, and looks like this:
 
 <br>
 
