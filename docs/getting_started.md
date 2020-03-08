@@ -747,10 +747,10 @@ Remember that I said that kable send and receive messages, so now let's see what
 ```
 <br>
 
-* **id**: It is a unique string that identifies the node in the network.
-* **host**: Contains the ip location dns of the node.
+* **id**: Its a string unique, used for identifies the node in your network.
+* **host**: Contains the location of the node ip/dns/socks.
 * **port**: Contains the port of the node.
-* **meta**: Is additional information that briefly describes the node.
+* **meta**: Is additional information to briefly describes the node.
 * **hostname**: [hostname](https://en.wikipedia.org/wiki/Hostname)
 * **state**: Show the current state of the node.
 * **ensured**: Is a boolean that shows if the data is being encrypted.
@@ -760,7 +760,7 @@ Remember that I said that kable send and receive messages, so now let's see what
 * **iid**: Is a unique identifier that identifies instance of the node.
 * **pid**: Is a unique identifier that identifies an process of the node.
 * **index**: Is a unique number used for the load balancer: [How the load balancer works](#how-the-load-balancer-works?).
-* **registre:**: Shows all nodes registered.   
+* **registre**: Shows all nodes registered.   
 * **replica**: Indicates if the node is a replica of another node. 
 * **stateData**: It has status information, such as time and reason, for example the detection of a node.
 * **rinfo**: This information comes from the transport module. It is used internally by kable, but can be used for monitoring and measurement.
