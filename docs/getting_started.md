@@ -92,12 +92,6 @@ The first service is called **foo**, this will be your identifier inside of your
 
 <br>
 
-> Note: kable does **not admits duplicate node ids, avoid this** ⚠️
-
-**See: [duplicate node ids](#duplicate-node-ids)**
-
-<br>
-
 ```typescript
 import kable from 'kable'
 import { createServer } from 'http'
@@ -644,7 +638,7 @@ foo:running
 ```
 <br>
 
-*suppose the **foo2** node can be in running state after **2 seconds***
+*Suppose the **foo2** node can be in running state after **2 seconds***
 
 <br>
 
