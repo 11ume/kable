@@ -35,7 +35,9 @@
 - **[The load balancer](#the-load-balancer)** 
   * **[How the load balancer works](#how-the-load-balancer-works?)**
   * **[Nodes ignored by the your node state](#nodes-ignored-by-the-your-node-state)**
-  * **[Loader balancer suggestions](#loader-balancer-suggestions)**
+
+- **[The messages](#the-messages)** 
+  * **[What does one of these messages look like](#what-does-one-of-these-messages-look-like?)**
 
 <br>
 
@@ -63,45 +65,6 @@ The architecture of kable is based on a decentralized service system where each 
 <br>
   
 Once they implement **Kable** in some service, is turned into a **node**, since it now starts to be a part of a network of connected nodes.
-
-<br>
-
-#### What does one of these messages look like?
-
-<br>
-
-```js
-{
-    id: 'foo'
-    , host: '192.168.0.1'
-    , port: 3000
-    , meta: {
-       id: 'foo-service'
-       , description: 'is a cool service called foo'
-    }
-    , hostname: 'DESKTOP-3MFPTDD'
-    , state: 'RUNNING'
-    , ensured: false
-    , ignorable: false
-    , adTime: 2000
-    , event: 'advertisement'
-    , iid: '621a334f-c748-47bd-9f9b-a926d7619a77'
-    , pid: 'e993539d-bb12-45e5-beff-b9f1d8da470b'
-    , index: 16160494567343020000
-    , replica: {
-        is: false
-    }
-    , stateData: {
-        time: 1583383484
-    }
-    , rinfo: {
-        address: '192.168.0.1'
-        , family: 'IPv4'
-        , port: 5000
-        , size: 255
-    }
-}
-```
 
 <br>
 
@@ -188,9 +151,9 @@ foo.pick('bar'): Promise<NodeRegistre>
                                                                 | Yes |                          | No  |                          |
                                                                 +-----+                          +-----+                          |          
                                                                    ↓                                ↓                             |
-                                +--------------------------------------+                         +-------------------------+      |
-                                |       This node have replicas?       |                         |       Wait for he       |      |
-                                +--------------------------------------+                         +-------------------------+      |
+                               +--------------------------------------+                          +-------------------------+      |
+                               |       This node have replicas?       |                          |       Wait for he       |      |
+                               +--------------------------------------+                          +-------------------------+      |
                                       |                         |                                             ↓                   | 
                                       |                         |                                +-------------------------+      |
                                       |                         |                                |         Timeout         |      |
@@ -703,9 +666,79 @@ baz.pick('foo') // foo
 
 <br>
 
-### Loader balancer suggestions
-#### The messages
-#### Interact whit deep logic of kable
+### The messages
+
+<br>
+
+Remember that I said that kable send and receive messages, so now let's see what some of these messages look like and what each part means.
+
+<br>
+
+#### What does one of these messages look like?
+
+<br>
+
+```js
+{
+    id: 'foo'
+    , host: '192.168.0.1'
+    , port: 3000
+    , meta: {
+       id: 'foo-service'
+       , description: 'is a cool service called foo'
+    }
+    , hostname: 'DESKTOP-3MFPTDD'
+    , state: 'RUNNING'
+    , ensured: false
+    , ignorable: false
+    , adTime: 2000
+    , event: 'advertisement'
+    , iid: '621a334f-c748-47bd-9f9b-a926d7619a77'
+    , pid: 'e993539d-bb12-45e5-beff-b9f1d8da470b'
+    , index: 16160494567343020000
+    , replica: {
+        is: false
+    }
+    , stateData: {
+        up: {
+          time: 1583383484
+        },
+        doing: {
+          time: 1583383486
+          , reason: 'trying to reconnect with the database'
+        }
+    }
+    , rinfo: {
+        address: '192.168.0.1'
+        , family: 'IPv4'
+        , port: 5000
+        , size: 255
+    }
+}
+```
+<br>
+
+* **id**: It is a text string that identifies the node.
+* **host**: Contains the ip location dns of the node.
+* **port**: Contains the port of the node.
+* **meta**: Is additional information that briefly describes the node.
+* **hostname**: [hostname](https://en.wikipedia.org/wiki/Hostname)
+* **state**: Show what state the node is in.
+* **ensured**: Is a boolean that shows if the data is being encrypted.
+* **ignorable**: Is a boolean that shows that this node should be ignored in the network.
+* **adTime**: Indicate in miliseconds, how often this node should be announced.
+* **event**: The event that triggered the issuance of this message.
+* **iid**: It is a unique identifier that identifies an instance of kable.
+* **pid**: It is a unique identifier that identifies an process of kable.
+* **index**: It is a unique number used to order the nodes see: [How the load balancer works](#how-the-load-balancer-works?).
+* **replica**: Its for indicated if this node is a replica of another node. 
+* **stateData**: It has status information, such as time and reason, for example the detection of a node.
+* **rinfo**: This information comes from the transport module. It is used internally by kable, but can be used for monitoring and measurement.
+
+
+<br>
+<br>
+
 
 
 
