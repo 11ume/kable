@@ -133,8 +133,11 @@ and is administered before it is requested.
 
 <br>
     <div align="center">
-        <img src="https://github.com/11ume/kable/blob/master/images/vscode-ext.png" width="500" height="auto"/>
+        <img src="https://github.com/11ume/kable-vscode/blob/master/images/vscode-ext.png" width="500" height="auto"/>
     </div>
+<br>
+
+<br>
 <br>
 
 
