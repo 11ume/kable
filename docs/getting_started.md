@@ -282,12 +282,11 @@ import oa from 'op-abort'
     await foo.up()
 
     const opAbort = oa()
+    setTimeout(opAbort.abort, 2000)
+
     await foo.pick('non-existent-node', { opAbort })
-
-    setTimeout(opAbort.abort, 1000)
     const { aborted } = opAbort.state
-
-    console.log('The node request was aborted after 1 second ', aborted)
+    console.log('The node request was aborted after 2 seconds ', aborted)
 }())
 
 ```
