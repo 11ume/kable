@@ -56,7 +56,7 @@
 
 ## **[Getting Started](https://github.com/11ume/kable/wiki/Getting-started)** 
 
-### **[Documentation](https://github.com/11ume/kable/wiki/Documentation)** In progress
+### **[Documentation](https://github.com/11ume/kable/wiki/Documentation)**
 
 <br>
 
