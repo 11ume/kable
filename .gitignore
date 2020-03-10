@@ -6,3 +6,4 @@
 /.nyc_output
 /.vscode
 /yarn.lock
+/examples/express/node_modules

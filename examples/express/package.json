@@ -1,0 +1,13 @@
+{
+  "name": "express-example",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "node service"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "kable": "git+https://github.com/11ume/kable.git"
+  }
+}
