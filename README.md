@@ -54,9 +54,9 @@
 
 <br>
 
-## **[Getting Started](https://github.com/11ume/kable/blob/master/docs/getting_started.md)** 
+## **[Getting Started](https://github.com/11ume/kable/wiki/Getting-started)** 
 
-### **[Documentation](https://github.com/11ume/kable/blob/master/docs/documentation.md)** In progress
+### **[Documentation](https://github.com/11ume/kable/wiki/Documentation)** In progress
 
 <br>
 
