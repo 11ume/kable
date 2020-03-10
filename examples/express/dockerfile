@@ -1,0 +1,6 @@
+FROM node:latest
+
+WORKDIR /services
+COPY package*.json ./
+COPY . ./
+RUN npm install

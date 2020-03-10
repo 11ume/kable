@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  foo:
+    build: ./services/foo
+    restart: on-failure
+    command: node services/foo
+    ports:
+      - 3000:3000
+  bar:
+    build: ./services/bar
+    restart: on-failure
+    command: node services/bar
+    ports:
+      - 3001:3001
+  baz:
+    build: ./services/baz
+    restart: on-failure
+    command: node services/baz
+    ports:
+      - 3002:3002
+  
+    

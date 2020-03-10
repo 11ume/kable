@@ -1,9 +1,7 @@
 {
   "name": "express-example",
-  "version": "0.0.1",
-  "description": "",
   "scripts": {
-    "start": "node service"
+    "start": "node foo"
   },
   "dependencies": {
     "express": "^4.17.1",
