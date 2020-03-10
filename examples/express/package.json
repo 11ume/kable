@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
-    "kable": "git+https://github.com/11ume/kable.git"
+    "kable": "git+https://github.com/11ume/kable.git",
+    "node-fetch": "^2.6.0"
   }
 }

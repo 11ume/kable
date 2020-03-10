@@ -117,9 +117,7 @@ and is administered before it is requested.
 | **[kable-mongo](https://github.com/11ume/kable-mongo)** | Mongo      | 🟢     |
 | **[kable-redis](https://github.com/11ume/kable-redis)** | Redis      | 🟢     |
 | **[kable-pg](https://github.com/11ume/kable-pg)**       | Postgresql | 🟢     |
-| **[kable-Memcached]()**                                 | Memcached  | 🔨     |
 | **[kable-http]()**                                      | HTTP/HTTPS | 🔨     |
-| **[kable-sync]()**                                      | TCP/UDP    | 🔨     |
 
 <br>
 

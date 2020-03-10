@@ -1,14 +1,13 @@
 const kable = require('kable')
 const express = require('express')
 const createError = require('http-errors')
-const bodyParser = require('body-parser')
+const { createServer } = require('http')
 
 const service = kable('baz', { port: 3002 })
 const app = express()
 
-const handler = (data, req, res, next) => res.json(data)
+const handler = (req, res) => res.json({ message: 'world' })
 
-app.use(bodyParser.json())
 app.use('/', handler)
 app.use((req, res, next) => next(createError(404)))
 app.use((err, req, res, next) => {
@@ -19,4 +18,7 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.listen(service.port, service.up)
+const server = createServer(app)
+server.on('listening', service.up)
+server.on('close', service.down)
+server.listen(service.port)
