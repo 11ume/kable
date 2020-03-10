@@ -1,22 +1,26 @@
-version: '3.7'
+version: "3.5"
 services:
   foo:
-    build: ./services/foo
+    build:
+      dockerfile: Dockerfile
+      context: .
     restart: on-failure
     command: node services/foo
     ports:
       - 3000:3000
   bar:
-    build: ./services/bar
+    build:
+      dockerfile: Dockerfile
+      context: .
     restart: on-failure
     command: node services/bar
     ports:
       - 3001:3001
   baz:
-    build: ./services/baz
+    build:
+      dockerfile: Dockerfile
+      context: .
     restart: on-failure
     command: node services/baz
     ports:
       - 3002:3002
-  
-    
