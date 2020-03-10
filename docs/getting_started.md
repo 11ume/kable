@@ -51,14 +51,17 @@ The architecture of kable is based on a decentralized service system where each 
 <br>
 
 * The main objective of **Kable** is make very easy, the service discovery process.
-* Important, you dont confuse **Kable** with other systems or methods of "service discovery", such as used in Kubernates or those made through Redis, using DNS. You should comparte **Kable** with [Apache Zookeeper](http://zookeeper.apache.org), [etcd](https://github.com/etcd-io/etcd), [Consul](https://www.consul.io), etc.
-* The main differences of **Kable** and the previous systems, is that it is totally focused on projects made with **Node.js** and works in a decentralized way and has a load balancer, it is faster.
-* **Kable** is designed to not emit exceptions, be very stable and consume few resources when it is in operation, since it must be coupled to the logic of your project, the exceptions can only occur on very important occasions.
-* Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, it may seem unattractive in a first impression but, **what benefits have it?**
+* **Important**, you dont confuse **Kable** with other systems or methods of "service discovery", such as used in Kubernates or those made through Redis or using DNS, etc. Kable is a complex system, you should comparte **Kable** with [Apache Zookeeper](http://zookeeper.apache.org), [etcd](https://github.com/etcd-io/etcd), [Consul](https://www.consul.io), etc.
+* The main differences of **Kable** and the previous systems, is that it is totally focused on projects made with **Node.js** and works in a decentralized way and has a load balancer.
+* **Kable** is **designed to not emit exceptions**, **be very stable** and **consume few resources** when it is in operation, since it must be coupled to the logic of your project, the exceptions can only occur on very important occasions.
+
+<br>
+
+* Instead of each service having to register, deregister and update your status in a central system, each service has is responsible for carrying out this work separately **with a low cost**, maybe it may seem unattractive in a first impression but, **what benefits have it?**:
   * Is highly fault tolerant, by his decentralized nature. 
   * Don't require install nothing outside of **Node.js** ecosystem. 
   * You don't need to worry by complex configurations.
-  * No extra hops, in a decentralized system many request are made to achieve something simple task, this is very expensive in terms of performance, resource consumption and add network traffic noise.
+  * No extra hops, **kable is extremely fast**, in a decentralized system many request are made to achieve something simple task, this is very expensive in terms of performance, resource consumption and add network traffic noise.
 * Why kable owns a load balacer system?
   * Why kable must be support node replication. 
   * You don't need to worry about setting up anything, the load balancer is smart.
@@ -198,7 +201,7 @@ foo.pick('bar'): Promise<NodeRegistre>
                                                             +------------------+                 
                                                             |    Get an node   |                 
                                                             +------------------+                 
-                                                                      ↓                         
+                                                                     ↓                         
                                                  +--------------------------------------+                 
                                                  |         The node is registred?       |  < ──────────────────────┐
                                                  +--------------------------------------+                          |
@@ -245,7 +248,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 ***Note:** If everything is working normally, correctly and redundant, the second and the third scenarios going to be the most probable and fastest.*
 
-*Kable is really fast, can get a serie of node registres in a little fraction of seconds, less than **50000 nanoseconds***
+*Kable extremely fast, can get a serie of node registres in a little fraction of second, less than **±50000 nanoseconds***.
 
 <br>
 

@@ -14,7 +14,7 @@ const handler = async (req, res, next) => {
     try {
         const barm = await request(bar)
         const bazm = await request(baz)
-        res.end(`${barm.message} ${bazm.message}!`)
+        res.send(`${barm.message} ${bazm.message}!`)
     } catch (err) {
         next(err)
         return
@@ -28,6 +28,7 @@ const kableMiddleware = (...servicesIds) => async (req, res, next) => {
             const pick = await service.pick(id, { timeout: 1000 })
             services[pick.id] = pick
         } catch (err) {
+            res.status(503)
             next(err)
             break
         }
