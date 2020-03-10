@@ -245,7 +245,7 @@ foo.pick('bar'): Promise<NodeRegistre>
 
 ***Note:** If everything is working normally, correctly and redundant, the second and the third scenarios going to be the most probable and fastest.*
 
-*Kable is really fast, can get a serie of node registres in a little fractions of seconds, less than **50000 nanoseconds***
+*Kable is really fast, can get a serie of node registres in a little fraction of seconds, less than **50000 nanoseconds***
 
 <br>
 
