@@ -50,7 +50,7 @@
     </div>
 <br>
 
-**This project is in alfa state 🔥**
+**This project is in development state 🔥**
 
 <br>
 
