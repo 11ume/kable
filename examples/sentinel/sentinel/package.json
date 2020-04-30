@@ -2,9 +2,13 @@
   "name": "mongo",
   "version": "0.0.1",
   "scripts": {
-    "start": "kable -u mongodb://localhost:27017 -i mongo"
+    "start": "kable -u mongodb://localhost:27017 -i mongo",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "kable-mongo": "https://github.com/11ume/kable-mongo"
-  }
+    "kable-mongo": "https://github.com/11ume/kable-mongo",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
