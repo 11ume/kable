@@ -17,16 +17,20 @@
     "lint": "node node_modules/tslint/bin/tslint -c tslint.json --project .",
     "build": "tsc -p ./tsconfig.json",
     "prepublishOnly": "npm run lint & npm run test & npm run build",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "@ava/babel": "^1.0.1",
     "kable-core": "https://github.com/11ume/kable-core.git",
-    "typescript": "^3.7.5"
+    "typescript": "^3.7.5",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "ava": "3.4.0",
     "ts-node": "^8.6.2",
     "tslint": "^6.0.0"
-  }
+  },
+  "snyk": true
 }
