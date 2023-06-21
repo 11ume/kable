@@ -22,7 +22,7 @@
     "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "@ava/babel": "^1.0.1",
+    "@ava/babel": "^2.0.0",
     "kable-core": "https://github.com/11ume/kable-core.git",
     "typescript": "^3.7.5",
     "snyk": "^1.316.1"
